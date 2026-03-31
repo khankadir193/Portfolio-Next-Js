@@ -221,9 +221,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 
 **Abdul Kadir Khan**
-- **Email**: abdulkadirkhan@example.com
-- **LinkedIn**: [linkedin.com/in/abdulkadirkhan](https://linkedin.com/in/abdulkadirkhan)
-- **Portfolio**: [abdulkadirkhan.dev](https://abdulkadirkhan.dev)
+- **Email**: abdulkadirk059@gmail.com
+- **LinkedIn**: [linkedin.com/in/abdulkadirkhan](https://www.linkedin.com/in/abdul-kadir-pathan5439/)
+- **Portfolio**: [abdulkadirkhan.dev](https://abdulkadirkhan786.netlify.app/)
 
 ---
 
