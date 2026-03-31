@@ -5,6 +5,9 @@ export default function Hero() {
   return (
     <section className={styles.heroSection}>
       <div className={styles.heroImageWrapper}>
+        <div className={`${styles.particle1}`}></div>
+        <div className={`${styles.particle2}`}></div>
+        <div className={`${styles.particle3}`}></div>
         <Image
           src="/kadir.jpg"
           alt="Kadir Name Hero"

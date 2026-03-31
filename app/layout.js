@@ -15,8 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Personal Portfolio",
-  description: "Portfolio website built with Next.js",
+  title: "Abdul Kadir Khan - Personal Portfolio",
+  description: "Portfolio website of Abdul Kadir Khan - Full Stack Developer",
+  icons: {
+    icon: '/globe.svg',
+  },
 };
 
 export default function RootLayout({ children }) {
