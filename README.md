@@ -52,6 +52,17 @@ A stunning, modern personal portfolio website built with Next.js 16, featuring a
 ```
 portfolio/
 ├── app/                          # Next.js App Router directory
+│   ├── data/                     # Data files for content
+│   │   ├── skillsData.js         # Skills data
+│   │   ├── experiencesData.js    # Experience data
+│   │   ├── projectsData.js       # Projects data
+│   │   └── educationData.js      # Education data
+│   ├── sections/                 # Section components
+│   │   ├── AboutSection.js       # About section component
+│   │   ├── SkillsSection.js      # Skills section component
+│   │   ├── ExperienceSection.js  # Experience section component
+│   │   ├── ProjectsSection.js    # Projects section component
+│   │   └── EducationSection.js   # Education section component
 │   ├── AmbientBackground.js      # Ambient background animation component
 │   ├── AmbientBackground.module.css
 │   ├── BackgroundName.js         # Background name display component
@@ -64,7 +75,7 @@ portfolio/
 │   ├── layout.js                 # Root layout component
 │   ├── MuiThemeProvider.js       # Material-UI theme provider
 │   ├── Navbar.js                 # Navigation component
-│   ├── page.js                   # Main page component
+│   ├── page.js                   # Main page component (refactored)
 │   ├── page.module.css
 │   └── favicon.ico
 ├── public/                       # Static assets
