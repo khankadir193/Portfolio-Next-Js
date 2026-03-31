@@ -1,0 +1,222 @@
+.backgroundNameContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -2; /* Behind the ambient background */
+  overflow: hidden;
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+}
+
+.floatingName {
+  position: absolute;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 900;
+  white-space: nowrap;
+  animation: gentleFloat 25s ease-in-out infinite;
+  text-shadow: 0 0 20px currentColor;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+    opacity: 0.03;
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px) rotate(2deg) scale(1.05);
+    opacity: 0.06;
+  }
+  50% {
+    transform: translateY(-10px) translateX(-15px) rotate(-1deg) scale(0.95);
+    opacity: 0.04;
+  }
+  75% {
+    transform: translateY(-25px) translateX(5px) rotate(1deg) scale(1.02);
+    opacity: 0.07;
+  }
+}
+
+/* Central name with special effects */
+.centralName {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(4rem, 12vw, 8rem);
+  font-weight: 900;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.nameGlow {
+  position: absolute;
+  background: linear-gradient(
+    45deg,
+    rgba(56, 189, 248, 0.02) 0%,
+    rgba(6, 182, 212, 0.01) 25%,
+    rgba(139, 92, 246, 0.02) 50%,
+    rgba(236, 72, 153, 0.01) 75%,
+    rgba(56, 189, 248, 0.02) 100%
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: namePulse 8s ease-in-out infinite;
+  text-shadow:
+    0 0 50px rgba(56, 189, 248, 0.1),
+    0 0 100px rgba(56, 189, 248, 0.05),
+    0 0 150px rgba(56, 189, 248, 0.02);
+}
+
+.nameGlow:nth-child(1) {
+  animation-delay: 0s;
+  color: rgba(56, 189, 248, 0.03);
+}
+
+.nameGlow:nth-child(2) {
+  animation-delay: -2s;
+  color: rgba(139, 92, 246, 0.02);
+  transform: translate(2px, 2px);
+}
+
+.nameGlow:nth-child(3) {
+  animation-delay: -4s;
+  color: rgba(236, 72, 153, 0.02);
+  transform: translate(-2px, -2px);
+}
+
+@keyframes namePulse {
+  0%, 100% {
+    opacity: 0.02;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.05;
+    transform: scale(1.02);
+  }
+}
+
+/* Scattered letters effect */
+.scatteredLetters {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.scatteredLetter {
+  position: absolute;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 700;
+  color: rgba(56, 189, 248, 0.08);
+  animation: letterDrift 15s ease-in-out infinite;
+  text-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+@keyframes letterDrift {
+  0%, 100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.05;
+  }
+  25% {
+    transform: translateY(-30px) translateX(20px) rotate(5deg);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translateY(-15px) translateX(-25px) rotate(-3deg);
+    opacity: 0.08;
+  }
+  75% {
+    transform: translateY(-40px) translateX(15px) rotate(2deg);
+    opacity: 0.12;
+  }
+}
+
+/* Additional ambient effects */
+.backgroundNameContainer::before {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.03) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: subtlePulse 12s ease-in-out infinite;
+  filter: blur(50px);
+}
+
+.backgroundNameContainer::after {
+  content: '';
+  position: absolute;
+  bottom: 20%;
+  right: 15%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.02) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: subtlePulse 15s ease-in-out infinite reverse;
+  filter: blur(40px);
+}
+
+@keyframes subtlePulse {
+  0%, 100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.2);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .floatingName {
+    font-size: clamp(1rem, 3vw, 2rem);
+  }
+
+  .centralName {
+    font-size: clamp(3rem, 10vw, 6rem);
+  }
+
+  .scatteredLetter {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+  }
+
+  .backgroundNameContainer::before,
+  .backgroundNameContainer::after {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floatingName {
+    font-size: clamp(0.8rem, 2.5vw, 1.5rem);
+  }
+
+  .centralName {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+  }
+
+  .scatteredLetter {
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+  }
+}
