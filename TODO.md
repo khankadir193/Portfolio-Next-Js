@@ -1,8 +1,8 @@
-# Task: Make Project Links Functional
+# Task: Add Quiz Application to Projects Section
 
 ## Steps:
-- [x] Step 1: Edit app/CardComponents.js - Make ProjectCard link clickable to external URL.
-- [x] Step 2: Test "View Project" opens new tab.
+- [x] Step 1: Update app/data/projectsData.js - Add Quiz Application entry.
+- [x] Step 2: Verify project displays with working link.
 - [x] Step 3: Complete.
 
-**Status: Done**
+**Status: Complete**
