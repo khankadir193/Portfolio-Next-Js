@@ -12,6 +12,7 @@ import SkillsSection from './sections/SkillsSection';
 import ExperienceSection from './sections/ExperienceSection';
 import ProjectsSection from './sections/ProjectsSection';
 import EducationSection from './sections/EducationSection';
+import ContactSection from './sections/ContactSection';
 
 export default function Home() {
   const navItems = ["about", "skills", "experience", "project", "education"];
@@ -25,6 +26,7 @@ export default function Home() {
           <ExperienceSection />
           <ProjectsSection />
           <EducationSection />
+          <ContactSection />
         </Container>
 
       <Footer />

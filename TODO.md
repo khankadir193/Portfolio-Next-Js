@@ -1,8 +1,9 @@
-# Task: Add Quiz Application to Projects Section
+# Task: Add Attractive Responsive Contact Form before Footer
 
 ## Steps:
-- [x] Step 1: Update app/data/projectsData.js - Add Quiz Application entry.
-- [x] Step 2: Verify project displays with working link.
-- [x] Step 3: Complete.
+- [x] Step 1: Create app/sections/ContactSection.js with MUI form (name, email, subject, message), animations, validation, console fallback.
+- [x] Step 2: Update app/page.js - Import and add ContactSection before Footer.
+- [x] Step 3: Update app/Footer.js - Add phone/email display.
+- [x] Step 4: Test responsiveness and submission.
 
 **Status: Complete**

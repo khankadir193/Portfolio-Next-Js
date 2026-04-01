@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { LinkedIn, Instagram, Facebook, Twitter } from '@mui/icons-material';
+import { LinkedIn, Instagram, Facebook, Twitter, Phone, Email } from '@mui/icons-material';
 
 export default function Footer() {
   const [currentYear, setCurrentYear] = useState(2024); // Default year
@@ -36,8 +36,14 @@ export default function Footer() {
             <Twitter />
           </a>
         </div>
+
+        <div className="contact-info">
+          <p><Phone /> +91 7081071456</p>
+          <p><Email /> abdulkadirk059@gmail.com</p>
+        </div>
         <p className="footer-copyright">© {currentYear} Abdul Kadir Khan. All rights reserved.</p>
       </div>
     </footer>
   );
 }
+
