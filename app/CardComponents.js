@@ -1,10 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { memo } from 'react';
 import { Card, CardContent, Typography, Grid, Box, Chip, Avatar } from '@mui/material';
 import { Code, Work, School, Build, Web, Storage, Cloud } from '@mui/icons-material';
 
-const SkillCard = ({ title, skills, icon }) => (
+const SkillCardComp = ({ title, skills, icon }) => (
   <Card sx={{
     minHeight: '280px',
     height: '100%',
@@ -87,7 +87,9 @@ const SkillCard = ({ title, skills, icon }) => (
   </Card>
 );
 
-const ExperienceCard = ({ title, company, period, description, skills }) => (
+export const SkillCard = memo(SkillCardComp);
+
+const ExperienceCardComp = ({ title, company, period, description, skills }) => (
   <Card sx={{
     minHeight: '320px',
     height: '100%',
@@ -176,7 +178,9 @@ const ExperienceCard = ({ title, company, period, description, skills }) => (
   </Card>
 );
 
-const ProjectCard = ({ title, description, technologies, link }) => (
+export const ExperienceCard = memo(ExperienceCardComp);
+
+const ProjectCardComp = ({ title, description, technologies, link }) => (
   <Card sx={{
     minHeight: '280px',
     height: '100%',
@@ -274,7 +278,10 @@ const ProjectCard = ({ title, description, technologies, link }) => (
   </Card>
 );
 
-const EducationCard = ({ degree, institution, period, description }) => (
+export const ProjectCard = memo(ProjectCardComp);
+
+const EducationCardComp = ({ degree, institution, period, description }) => (
+
   <Card sx={{
     minHeight: '280px',
     height: '100%',
@@ -358,4 +365,4 @@ const EducationCard = ({ degree, institution, period, description }) => (
   </Card>
 );
 
-export { SkillCard, ExperienceCard, ProjectCard, EducationCard };
+export const EducationCard = memo(EducationCardComp);

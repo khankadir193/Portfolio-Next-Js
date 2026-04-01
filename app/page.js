@@ -4,15 +4,30 @@ import { useState, useEffect } from 'react';
 import Hero from './Hero';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { Container } from '@mui/material';
+import { Container, Skeleton } from '@mui/material';
+import dynamic from 'next/dynamic';
 
-// Import section components
-
-import SkillsSection from './sections/SkillsSection';
-import ExperienceSection from './sections/ExperienceSection';
-import ProjectsSection from './sections/ProjectsSection';
-import EducationSection from './sections/EducationSection';
-import ContactSection from './sections/ContactSection';
+// Lazy-loaded section components
+const LazySkillsSection = dynamic(() => import('./sections/SkillsSection'), { 
+  loading: () => <Skeleton variant="rectangular" sx={{ height: 400, borderRadius: 4 }} />, 
+  ssr: false 
+});
+const LazyExperienceSection = dynamic(() => import('./sections/ExperienceSection'), { 
+  loading: () => <Skeleton variant="rectangular" sx={{ height: 400, borderRadius: 4 }} />, 
+  ssr: false 
+});
+const LazyProjectsSection = dynamic(() => import('./sections/ProjectsSection'), { 
+  loading: () => <Skeleton variant="rectangular" sx={{ height: 600, borderRadius: 4 }} />, 
+  ssr: false 
+});
+const LazyEducationSection = dynamic(() => import('./sections/EducationSection'), { 
+  loading: () => <Skeleton variant="rectangular" sx={{ height: 400, borderRadius: 4 }} />, 
+  ssr: false 
+});
+const LazyContactSection = dynamic(() => import('./sections/ContactSection'), { 
+  loading: () => <Skeleton variant="rectangular" sx={{ height: 500, borderRadius: 4 }} />, 
+  ssr: false 
+});
 
 export default function Home() {
   const navItems = ["about", "skills", "experience", "project", "education"];
@@ -22,11 +37,11 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Container maxWidth="lg" sx={{ py: 4 }}>
-          <SkillsSection />
-          <ExperienceSection />
-          <ProjectsSection />
-          <EducationSection />
-          <ContactSection />
+          <LazySkillsSection />
+          <LazyExperienceSection />
+          <LazyProjectsSection />
+          <LazyEducationSection />
+          <LazyContactSection />
         </Container>
 
       <Footer />
