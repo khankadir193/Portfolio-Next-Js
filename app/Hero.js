@@ -54,7 +54,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className={styles.heroSection}>
+    <section id="about" className={styles.heroSection}>
       <div className={styles.heroImageWrapper} ref={imageWrapperRef}>
         <div className={`${styles.particle1}`}></div>
         <div className={`${styles.particle2}`}></div>

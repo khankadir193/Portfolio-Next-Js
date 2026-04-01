@@ -252,21 +252,23 @@ const ProjectCard = ({ title, description, technologies, link }) => (
           />
         ))}
       </Box>
-      {link && (
-        <Typography variant="body2" sx={{
-          color: '#38bdf8',
-          textDecoration: 'none',
-          fontWeight: '600',
-          fontSize: '0.9rem',
-          cursor: 'pointer',
-          transition: 'all 0.3s ease',
-          '&:hover': {
-            color: '#06b6d4',
-            textDecoration: 'underline'
-          }
-        }}>
-          View Project →
-        </Typography>
+{link && (
+        <a href={link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+          <Typography variant="body2" sx={{
+            color: '#38bdf8',
+            textDecoration: 'none',
+            fontWeight: '600',
+            fontSize: '0.9rem',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            '&:hover': {
+              color: '#06b6d4',
+              textDecoration: 'underline'
+            }
+          }}>
+            View Project →
+          </Typography>
+        </a>
       )}
     </CardContent>
   </Card>

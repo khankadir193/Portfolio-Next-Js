@@ -7,7 +7,7 @@ import Footer from './Footer';
 import { Container } from '@mui/material';
 
 // Import section components
-import AboutSection from './sections/AboutSection';
+
 import SkillsSection from './sections/SkillsSection';
 import ExperienceSection from './sections/ExperienceSection';
 import ProjectsSection from './sections/ProjectsSection';
@@ -20,17 +20,12 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
-      <div className="page">
-        <AboutSection />
-
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
           <SkillsSection />
           <ExperienceSection />
           <ProjectsSection />
           <EducationSection />
         </Container>
-
-      </div>
 
       <Footer />
     </>
