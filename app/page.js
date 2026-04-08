@@ -30,13 +30,13 @@ const LazyContactSection = dynamic(() => import('./sections/ContactSection'), {
 });
 
 export default function Home() {
-  const navItems = ["about", "skills", "experience", "project", "education"];
+  const navItems = ["about", "skills", "experience", "project", "education", "contact"];
 
   return (
     <>
       <Navbar />
       <Hero />
-      <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
           <LazySkillsSection />
           <LazyExperienceSection />
           <LazyProjectsSection />
