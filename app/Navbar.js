@@ -21,6 +21,27 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [navItems]);
 
+  const handleNavClick = (e, item) => {
+    setActiveSection(item);
+    
+    // Special handling for "about" - prevent hash and scroll to top
+    if (item === 'about') {
+      e.preventDefault(); // Prevent URL hash only for about
+      window.history.replaceState(null, null, window.location.pathname); // Clear hash
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    
+    // For other sections - prevent default and use smooth scrolling
+    e.preventDefault(); // Prevent default anchor jump
+    const section = document.getElementById(item);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      // Update URL with hash after smooth scroll starts
+      window.history.replaceState(null, null, `#${item}`);
+    }
+  };
+
   return (
     <nav className="navbar">
       <h1 className="brand">Abdul Kadir Khan</h1>
@@ -30,7 +51,7 @@ export default function Navbar() {
             <a
               href={`#${item}`}
               className={activeSection === item ? 'active' : ''}
-              onClick={() => setActiveSection(item)}
+              onClick={(e) => handleNavClick(e, item)}
             >
               {item}
             </a>
