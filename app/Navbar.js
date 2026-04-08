@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 
 export default function Navbar() {
-  const navItems = ["about", "skills", "experience", "project", "education"];
+  const navItems = ["about", "skills", "experience", "project", "education", "contact"];
   const [activeSection, setActiveSection] = useState('about');
 
   useEffect(() => {
@@ -29,6 +29,18 @@ export default function Navbar() {
       e.preventDefault(); // Prevent URL hash only for about
       window.history.replaceState(null, null, window.location.pathname); // Clear hash
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    
+    // Special handling for "contact" - scroll to bottom
+    if (item === 'contact') {
+      e.preventDefault(); // Prevent default anchor jump
+      const section = document.getElementById(item);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        // Update URL with hash after smooth scroll starts
+        window.history.replaceState(null, null, `#${item}`);
+      }
       return;
     }
     
