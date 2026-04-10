@@ -43,7 +43,8 @@ const SkillCardComp = ({ title, skills, icon }) => (
           mr: 2.5,
           width: 48,
           height: 48,
-          boxShadow: '0 4px 14px rgba(56, 189, 248, 0.4)'
+          boxShadow: '0 4px 14px rgba(56, 189, 248, 0.4)',
+          transition: 'transform 0.3s ease'
         }}>
           {icon}
         </Avatar>
@@ -54,12 +55,14 @@ const SkillCardComp = ({ title, skills, icon }) => (
           background: 'linear-gradient(135deg, #38bdf8, #06b6d4)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text'
+          backgroundClip: 'text',
+          textAlign: 'center',
+          mb: 2
         }}>
           {title}
         </Typography>
       </Box>
-      <Box display="flex" flexWrap="wrap" gap={1.5} sx={{ flexGrow: 1 }}>
+      <Box display="flex" flexWrap="wrap" gap={1.5} sx={{ flexGrow: 1, justifyContent: 'center' }}>
         {skills.map((skill, index) => (
           <Chip
             key={index}
@@ -76,7 +79,7 @@ const SkillCardComp = ({ title, skills, icon }) => (
                 bgcolor: 'rgba(56, 189, 248, 0.15)',
                 borderColor: '#38bdf8',
                 color: '#38bdf8',
-                transform: 'translateY(-2px)',
+                transform: 'translateY(-2px) scale(1.05)',
                 boxShadow: '0 4px 8px rgba(56, 189, 248, 0.2)'
               }
             }}
@@ -121,36 +124,52 @@ const ExperienceCardComp = ({ title, company, period, description, skills }) => 
       }
     }
   }}>
-    <CardContent sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <Typography variant="h5" component="h4" sx={{
-        color: '#38bdf8',
-        fontWeight: '700',
-        mb: 1.5,
-        fontSize: '1.5rem',
-        background: 'linear-gradient(135deg, #38bdf8, #06b6d4)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        backgroundClip: 'text'
-      }}>
-        {title}
-      </Typography>
-      <Typography variant="subtitle1" sx={{
-        color: '#94a3b8',
-        mb: 3,
-        fontSize: '1.1rem',
-        fontWeight: '500'
-      }}>
-        {company} • {period}
-      </Typography>
+    <CardContent sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column', textAlign: 'left' }}>
+      <Box display="flex" alignItems="center" mb={3}>
+        <Avatar sx={{
+          bgcolor: 'linear-gradient(135deg, #38bdf8, #06b6d4)',
+          mr: 2.5,
+          width: 48,
+          height: 48,
+          boxShadow: '0 4px 14px rgba(56, 189, 248, 0.4)',
+          transition: 'transform 0.3s ease'
+        }}>
+          <Work />
+        </Avatar>
+        <Box sx={{ textAlign: 'center', flexGrow: 1 }}>
+          <Typography variant="h5" component="h4" sx={{
+            color: '#38bdf8',
+            fontWeight: '700',
+            fontSize: '1.5rem',
+            background: 'linear-gradient(135deg, #38bdf8, #06b6d4)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textAlign: 'center',
+            mb: 1
+          }}>
+            {title}
+          </Typography>
+          <Typography variant="subtitle1" sx={{
+            color: '#94a3b8',
+            fontSize: '1.1rem',
+            fontWeight: '500',
+            textAlign: 'center'
+          }}>
+            {company} • {period}
+          </Typography>
+        </Box>
+      </Box>
       <Typography variant="body1" sx={{
         mb: 3,
         lineHeight: 1.7,
         color: '#e2e8f0',
-        flexGrow: 1
+        flexGrow: 1,
+        textAlign: 'left'
       }}>
         {description}
       </Typography>
-      <Box display="flex" flexWrap="wrap" gap={1.5}>
+      <Box display="flex" flexWrap="wrap" gap={1.5} justifyContent="center">
         {skills.map((skill, index) => (
           <Chip
             key={index}
@@ -167,7 +186,7 @@ const ExperienceCardComp = ({ title, company, period, description, skills }) => 
               '&:hover': {
                 bgcolor: '#38bdf8',
                 color: 'white',
-                transform: 'translateY(-2px)',
+                transform: 'translateY(-2px) scale(1.05)',
                 boxShadow: '0 4px 8px rgba(56, 189, 248, 0.3)'
               }
             }}
@@ -212,7 +231,7 @@ const ProjectCardComp = ({ title, description, technologies, link }) => (
       }
     }
   }}>
-    <CardContent sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <CardContent sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column', textAlign: 'left' }}>
       <Typography variant="h5" component="h4" sx={{
         color: '#38bdf8',
         fontWeight: '700',
@@ -221,7 +240,8 @@ const ProjectCardComp = ({ title, description, technologies, link }) => (
         background: 'linear-gradient(135deg, #38bdf8, #06b6d4)',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
-        backgroundClip: 'text'
+        backgroundClip: 'text',
+        textAlign: 'center'
       }}>
         {title}
       </Typography>
@@ -229,11 +249,12 @@ const ProjectCardComp = ({ title, description, technologies, link }) => (
         mb: 3,
         lineHeight: 1.7,
         color: '#e2e8f0',
-        flexGrow: 1
+        flexGrow: 1,
+        textAlign: 'center'
       }}>
         {description}
       </Typography>
-      <Box display="flex" flexWrap="wrap" gap={1.5} mb={3}>
+      <Box display="flex" flexWrap="wrap" gap={1.5} mb={3} justifyContent="center">
         {technologies.map((tech, index) => (
           <Chip
             key={index}
@@ -250,7 +271,9 @@ const ProjectCardComp = ({ title, description, technologies, link }) => (
               '&:hover': {
                 bgcolor: 'rgba(56, 189, 248, 0.15)',
                 borderColor: '#38bdf8',
-                color: '#38bdf8'
+                color: '#38bdf8',
+                transform: 'translateY(-2px) scale(1.05)',
+                boxShadow: '0 4px 8px rgba(56, 189, 248, 0.2)'
               }
             }}
           />
@@ -265,6 +288,7 @@ const ProjectCardComp = ({ title, description, technologies, link }) => (
             fontSize: '0.9rem',
             cursor: 'pointer',
             transition: 'all 0.3s ease',
+            textAlign: 'center',
             '&:hover': {
               color: '#06b6d4',
               textDecoration: 'underline'
@@ -281,7 +305,6 @@ const ProjectCardComp = ({ title, description, technologies, link }) => (
 export const ProjectCard = memo(ProjectCardComp);
 
 const EducationCardComp = ({ degree, institution, period, description }) => (
-
   <Card sx={{
     minHeight: '280px',
     height: '100%',
@@ -313,18 +336,19 @@ const EducationCardComp = ({ degree, institution, period, description }) => (
       }
     }
   }}>
-    <CardContent sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <CardContent sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
       <Box display="flex" alignItems="center" mb={3}>
         <Avatar sx={{
           bgcolor: 'linear-gradient(135deg, #38bdf8, #06b6d4)',
           mr: 3,
           width: 48,
           height: 48,
-          boxShadow: '0 4px 14px rgba(56, 189, 248, 0.4)'
+          boxShadow: '0 4px 14px rgba(56, 189, 248, 0.4)',
+          transition: 'transform 0.3s ease'
         }}>
           <School />
         </Avatar>
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ textAlign: 'center', flexGrow: 1 }}>
           <Typography variant="h5" component="h4" sx={{
             color: '#38bdf8',
             fontWeight: '700',
@@ -333,6 +357,7 @@ const EducationCardComp = ({ degree, institution, period, description }) => (
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
+            textAlign: 'center',
             lineHeight: 1.3
           }}>
             {degree}
@@ -340,7 +365,8 @@ const EducationCardComp = ({ degree, institution, period, description }) => (
           <Typography variant="subtitle1" sx={{
             color: '#94a3b8',
             fontSize: '1rem',
-            fontWeight: '500'
+            fontWeight: '500',
+            textAlign: 'center'
           }}>
             {institution}
           </Typography>
@@ -350,14 +376,16 @@ const EducationCardComp = ({ degree, institution, period, description }) => (
         color: '#64748b',
         mb: 2.5,
         fontSize: '0.9rem',
-        fontWeight: '500'
+        fontWeight: '500',
+        textAlign: 'center'
       }}>
         {period}
       </Typography>
       <Typography variant="body1" sx={{
         lineHeight: 1.7,
         color: '#e2e8f0',
-        flexGrow: 1
+        flexGrow: 1,
+        textAlign: 'center'
       }}>
         {description}
       </Typography>
