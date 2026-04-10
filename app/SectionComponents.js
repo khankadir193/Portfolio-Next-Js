@@ -24,19 +24,23 @@ export const NeonCard = ({ children, className = '' }) => (
   </div>
 );
 
-// Experience Card
+// Experience Card with Icon
 export const ExperienceCardComponent = ({ 
   title, 
   company, 
   period, 
   description, 
-  skills 
+  skills,
+  icon = '💼'
 }) => (
   <NeonCard>
     <div className={styles.cardHeader}>
-      <div>
-        <h4 className={styles.cardTitle}>{title}</h4>
-        <p className={styles.cardSubtitle}>{company}</p>
+      <div className={styles.cardHeaderLeft}>
+        <span className={styles.cardIcon}>{icon}</span>
+        <div>
+          <h4 className={styles.cardTitle}>{title}</h4>
+          <p className={styles.cardSubtitle}>{company}</p>
+        </div>
       </div>
       <span className={styles.cardPeriod}>{period}</span>
     </div>
@@ -54,10 +58,14 @@ export const ProjectCardComponent = ({
   title, 
   description, 
   technologies, 
-  link 
+  link,
+  icon = '📁'
 }) => (
   <NeonCard>
-    <h4 className={styles.projectTitle}>{title}</h4>
+    <div className={styles.projectHeader}>
+      <span className={styles.projectIcon}>{icon}</span>
+      <h4 className={styles.projectTitle}>{title}</h4>
+    </div>
     <p className={styles.projectDescription}>{description}</p>
     <div className={styles.skillsList}>
       {technologies.map((tech, idx) => (

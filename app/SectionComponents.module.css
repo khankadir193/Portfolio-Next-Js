@@ -114,6 +114,19 @@
   gap: 1rem;
 }
 
+.cardHeaderLeft {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.cardIcon {
+  font-size: 1.5rem;
+  min-width: 30px;
+  flex-shrink: 0;
+}
+
 .cardTitle {
   font-size: 1.3rem;
   color: #00d4ff;
@@ -151,11 +164,23 @@
 }
 
 /* Project Card */
+.projectHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.projectIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
 .projectTitle {
   font-size: 1.3rem;
   color: #00d4ff;
   font-weight: 700;
-  margin: 0 0 0.75rem 0;
+  margin: 0;
 }
 
 .projectDescription {

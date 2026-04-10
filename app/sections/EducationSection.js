@@ -1,20 +1,30 @@
-import { EducationCard } from '../CardComponents';
-import { Container, Typography, Grid, Box } from '@mui/material';
+'use client';
+
+import { Box } from '@mui/material';
+import { SectionTitle, NeonCard } from '../SectionComponents';
+import styles from './EducationSection.module.css';
 import { educationData } from '../data/educationData';
 
 export default function EducationSection() {
   return (
-    <Box id="education" sx={{ mb: 6 }}>
-      <Typography variant="h3" component="h2" sx={{ mb: 4, color: 'primary.main', textAlign: 'center' }}>
-        Education
-      </Typography>
-      <Grid container spacing={3}>
+    <Box id="education" sx={{ mb: 6, py: 4 }}>
+      <SectionTitle>Education</SectionTitle>
+      
+      <div className={styles.educationContainer}>
         {educationData.map((edu, index) => (
-          <Grid item xs={12} md={6} key={index}>
-            <EducationCard {...edu} />
-          </Grid>
+          <NeonCard key={index} className={styles.educationCard}>
+            <div className={styles.educationHeader}>
+              <div className={styles.educationIcon}>🎓</div>
+              <div className={styles.educationInfo}>
+                <h4 className={styles.degree}>{edu.degree}</h4>
+                <p className={styles.institution}>{edu.institution}</p>
+              </div>
+              <span className={styles.period}>{edu.period}</span>
+            </div>
+            <p className={styles.description}>{edu.description}</p>
+          </NeonCard>
         ))}
-      </Grid>
+      </div>
     </Box>
   );
 }
