@@ -1,0 +1,16 @@
+.projectsContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .projectsContainer {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projectsContainer {
+    padding: 0 0.5rem;
+  }
+}

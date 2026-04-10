@@ -1,17 +1,17 @@
-import { ProjectCard } from '../CardComponents';
 import { Container, Typography, Grid, Box } from '@mui/material';
+import { SectionTitle, ProjectCardComponent } from '../SectionComponents';
+import styles from './ProjectsSection.module.css';
 import { projectsData } from '../data/projectsData';
 
 export default function ProjectsSection() {
   return (
-    <Box id="project" sx={{ mb: 6 }}>
-      <Typography variant="h3" component="h2" sx={{ mb: 4, color: 'primary.main', textAlign: 'center' }}>
-        Projects
-      </Typography>
-      <Grid container spacing={3}>
+    <Box id="project" sx={{ mb: 6, py: 4 }}>
+      <SectionTitle>Projects</SectionTitle>
+      
+      <Grid container spacing={3} sx={{ maxWidth: '1000px', margin: '0 auto' }}>
         {projectsData.map((proj, index) => (
           <Grid item xs={12} md={6} key={index}>
-            <ProjectCard {...proj} />
+            <ProjectCardComponent {...proj} />
           </Grid>
         ))}
       </Grid>

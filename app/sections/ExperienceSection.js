@@ -1,20 +1,20 @@
-import { ExperienceCard } from '../CardComponents';
 import { Container, Typography, Grid, Box } from '@mui/material';
+import { SectionTitle, ExperienceCardComponent } from '../SectionComponents';
+import styles from './ExperienceSection.module.css';
 import { experiencesData } from '../data/experiencesData';
 
 export default function ExperienceSection() {
   return (
-    <Box id="experience" sx={{ mb: 6 }}>
-      <Typography variant="h3" component="h2" sx={{ mb: 4, color: 'primary.main', textAlign: 'center' }}>
-        Experience
-      </Typography>
-      <Grid container spacing={3}>
+    <Box id="experience" sx={{ mb: 6, py: 4 }}>
+      <SectionTitle>Experience</SectionTitle>
+      
+      <div className={styles.experienceContainer}>
         {experiencesData.map((exp, index) => (
-          <Grid item xs={12} key={index}>
-            <ExperienceCard {...exp} />
-          </Grid>
+          <div key={index} className={styles.experienceItem}>
+            <ExperienceCardComponent {...exp} />
+          </div>
         ))}
-      </Grid>
+      </div>
     </Box>
   );
 }

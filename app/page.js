@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Hero from './Hero';
+import About from './About';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { Container, Skeleton } from '@mui/material';
@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Hero />
+      <About />
       <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
           <LazySkillsSection />
           <LazyExperienceSection />
@@ -48,3 +48,4 @@ export default function Home() {
     </>
   );
 }
+
