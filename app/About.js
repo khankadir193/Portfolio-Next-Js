@@ -1,15 +1,10 @@
 'use client';
 
 import Image from 'next/image';
+import PersonalityBadges from './components/PersonalityBadges';
 import styles from './About.module.css';
 
 export default function About() {
-  const personalityBadges = [
-    { icon: '💻', label: 'Tech Enthusiast' },
-    { icon: '🧠', label: 'Problem Solver' },
-    { icon: '👥', label: 'Team Player' }
-  ];
-
   return (
     <section id="about" className={styles.about}>
       <div className={styles.container}>
@@ -26,14 +21,7 @@ export default function About() {
           </p>
 
           {/* Personality Badges */}
-          <div className={styles.badges}>
-            {personalityBadges.map((badge, index) => (
-              <div key={index} className={styles.badge}>
-                <span className={styles.badgeIcon}>{badge.icon}</span>
-                <span className={styles.badgeLabel}>{badge.label}</span>
-              </div>
-            ))}
-          </div>
+          <PersonalityBadges />
         </div>
 
         {/* Right Section - Profile Image with Neon Ring */}

@@ -16,7 +16,7 @@ export const projectsData = [
   },
   {
     title: 'Portfolio Website',
-    description: 'Created a full post mUTube's 3 will integrative solution for ustre segment, and commerce ingentive openeloyment. Mained a vadssta red wittd contort, sercipt depne reling sutablassbtent, and miruds.',
+    description: 'Created a full post mUTube s 3 will integrative solution for ustre segment, and commerce ingentive openeloyment. Mained a vadssta red wittd contort, sercipt depne reling sutablassbtent, and miruds.',
     technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
     link: '#',
     icon: '🎨'
