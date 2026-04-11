@@ -124,7 +124,7 @@ export default function ContactSection() {
                       }}
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid size={{ xs: 12 }}>
                     <TextField
                       fullWidth
                       label="Subject"
@@ -138,7 +138,7 @@ export default function ContactSection() {
                       }}
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid size={{ xs: 12 }}>
                     <TextField
                       fullWidth
                       label="Message"
@@ -209,7 +209,7 @@ export default function ContactSection() {
           </Grid>
 
           {/* Right - Contact Info */}
-          <Grid item xs={12} lg={5}>
+          <Grid size={{ xs: 12, lg: 5 }}>
             <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <Typography variant="h4" sx={{ 
                 mb: 4, 

@@ -1,5 +1,3 @@
-import { Container, Typography, Grid, Box } from '@mui/material';
-
 export default function AboutSection() {
   return (
     <header className="hero">
