@@ -1,27 +1,27 @@
 // Education data
 export const educationData = [
   {
-    degree: 'Master Of Computer Application - MCA',
-    institution: 'Vellore Institute Of Technology',
-    period: 'July 2019 - May 2022 | Grade: 8.7 CGPA',
-    description: 'Completed master\'s degree focused on computer programming and specific applications from VIT Bhopal. Solidified knowledge and honed skills in the field through this academic journey.'
+    degree: 'Master Of Computer Applications',
+    institution: 'XYZ University',
+    period: '2021 - 2023',
+    cgpa: 'CGPA: 8.6 | Specialized in software development.',
+    description: 'Graduated with a focus on development, learned programming. Learned advanced programming, database management, and web development.',
+    skills: ['React.js', 'Next.js', 'MongoDB', 'MySQL']
   },
   {
-    degree: 'Bachelor Of Computer Application - BCA',
-    institution: 'Makhanlal Chaturvedi National University of Journalism & Communication',
-    period: 'July 2016 - May 2019 | Grade: 82%',
-    description: 'Graduated from Gorakhpur, affiliated with MCRP Bhopal. Gained proficiency in programming languages including Java, C, C++, and PHP.'
+    degree: 'Bachelor Of Computer Science (BSc)',
+    institution: 'ABC University',
+    period: '2017 - 2020',
+    cgpa: 'CGPA: 8.4 | Learnt a strong foundation.',
+    description: 'Graduated with a strong foundation in computer science. Studied algorithms, data structures, and software engineering principles.',
+    skills: ['React', 'Next.js', 'MongoDB', 'MySQL']
   },
   {
-    degree: 'Intermediate Science with Math',
-    institution: 'Sardar Patel Rajmati Devi Intermediate College',
-    period: 'July 2015 - May 2016 | Grade: 79%',
-    description: 'Completed class 12th education studying Science with Math.'
-  },
-  {
-    degree: 'High School',
-    institution: 'Sardar Patel Rajmati Devi Intermediate College',
-    period: 'July 2013 - May 2014 | Grade: 77%',
-    description: 'Completed class 10th education studying Science with Math.'
+    degree: 'Intermediate Science with Maths',
+    institution: 'XYZ College',
+    period: '2015 - 2017',
+    cgpa: 'CGPA: 86.2 | Learnt a matrix embrided.',
+    description: 'Completed studies in mathematics, physics, and chemistry forming the basis for further studies.',
+    skills: ['HTML', 'CSS', 'Javascript', 'Bootstrap']
   }
 ];
