@@ -1,24 +1,5 @@
 // Experience data
-export const experiencesData = [
-  // Skills group
-  {
-    type: 'skills',
-    title: 'Software Engineer',
-    company: 'Tech Company',
-    period: 'Skills & Technologies',
-    description: 'Proficient in modern development technologies and frameworks',
-    skills: ['React', 'Node.js', 'MongoDB', 'AWS'],
-    icon: '🛠️'
-  },
-  {
-    type: 'skills',
-    title: 'Software',
-    company: 'Tools & Platforms',
-    period: 'Development Tools',
-    description: 'Experience with version control, containerization, and deployment',
-    skills: ['Git', 'GitHub', 'Docker', 'Linux'],
-    icon: '⚙️'
-  },
+export const experiencesData = [ 
   // Main experiences
   {
     title: 'Software Engineer',
