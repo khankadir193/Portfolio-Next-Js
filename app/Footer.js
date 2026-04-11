@@ -14,12 +14,12 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
-        <h2 className={styles.footerBrand}>John Doe</h2>
+        <h2 className={styles.footerBrand}>Abdul Kadir Khan</h2>
         <p className={styles.footerTitle}>Full-Stack Software Engineer</p>
         
         <div className={styles.socialLinks}>
           <a 
-            href="https://github.com" 
+            href="https://github.com/khankadir193" 
             target="_blank" 
             rel="noopener noreferrer" 
             aria-label="GitHub"
@@ -28,7 +28,7 @@ export default function Footer() {
             <GitHub />
           </a>
           <a 
-            href="https://linkedin.com" 
+            href="https://linkedin.com/in/abdul-kadir-khan-77bb68291" 
             target="_blank" 
             rel="noopener noreferrer" 
             aria-label="LinkedIn"
@@ -39,7 +39,7 @@ export default function Footer() {
         </div>
 
         <p className={styles.footerCopyright}>
-          © {currentYear} John Doe | All rights reserved
+          © {currentYear} Abdul Kadir Khan | All rights reserved
         </p>
       </div>
     </footer>

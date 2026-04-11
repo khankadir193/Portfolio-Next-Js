@@ -45,7 +45,7 @@ export default function ContactSection() {
     setSubmitting(true);
     setStatus('');
 
-    alert(`Message sent! (Demo)\nName: ${formData.name}\nEmail: ${formData.email}\nTo: johndoe@email.com`);
+    alert(`Message sent! (Demo)\nName: ${formData.name}\nEmail: ${formData.email}\nTo: abdulkadirk059@gmail.com`);
 
     setSubmitting(false);
     setStatus('success');
@@ -63,26 +63,26 @@ export default function ContactSection() {
             <div className={styles.contactInfo}>
               <div className={styles.infoItem}>
                 <Mail className={styles.infoIcon} />
-                <span className={styles.infoText}>johndoe@email.com</span>
+                <span className={styles.infoText}>abdulkadirk059@gmail.com</span>
               </div>
               <div className={styles.infoItem}>
                 <Phone className={styles.infoIcon} />
-                <span className={styles.infoText}>+1 123 456 7890</span>
+                <span className={styles.infoText}>+91 7081071456</span>
               </div>
               <div className={styles.infoItem}>
                 <LocationOn className={styles.infoIcon} />
-                <span className={styles.infoText}>New York, NY</span>
+                <span className={styles.infoText}>India</span>
               </div>
             </div>
 
             <div className={styles.socialLinks}>
-              <a href="#" className={styles.socialIcon} aria-label="LinkedIn">
+              <a href="https://linkedin.com/in/abdul-kadir-khan-77bb68291" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
                 <LinkedIn />
               </a>
-              <a href="#" className={styles.socialIcon} aria-label="GitHub">
+              <a href="https://github.com/khankadir193" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="GitHub">
                 <GitHub />
               </a>
-              <a href="#" className={styles.socialIcon} aria-label="Email">
+              <a href="mailto:abdulkadirk059@gmail.com" className={styles.socialIcon} aria-label="Email">
                 <Mail />
               </a>
             </div>
