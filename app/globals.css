@@ -1,12 +1,14 @@
 :root {
-  --background: #0a0e27;
-  --surface: #0f1729;
-  --surface-border: #1a2847;
-  --text: #e2e8f0;
-  --muted: #94a3b8;
+  --background: #0a0a0f;
+  --surface: #0f0f1a;
+  --surface-border: #1a1a2e;
+  --text: #ffffff;
+  --muted: #b8b8c8;
   --accent: #00d4ff;
   --neon-cyan: #00d4ff;
   --neon-blue: #0099ff;
+  --glow-cyan: rgba(0, 212, 255, 0.9);
+  --glow-blue: rgba(0, 153, 255, 0.7);
 }
 
 html, body {
@@ -24,7 +26,7 @@ html, body {
 }
 
 body {
-  background: linear-gradient(135deg, #0a0e27 0%, #0f1729 50%, #0a0e27 100%);
+  background: linear-gradient(135deg, #0a0a0f 0%, #0f0f1a 50%, #0a0a0f 100%);
   color: var(--text);
   font-family: var(--font-geist-sans), Arial, sans-serif;
   line-height: 1.5;
@@ -42,20 +44,20 @@ body::before {
   right: 0;
   bottom: 0;
   background-image: 
-    radial-gradient(2px 2px at 20% 30%, #eee, rgba(0, 212, 255, 0.2)),
-    radial-gradient(2px 2px at 60% 70%, #fff, rgba(0, 153, 255, 0.1)),
-    radial-gradient(1px 1px at 50% 50%, #fff, rgba(0, 212, 255, 0.15)),
-    radial-gradient(1px 1px at 80% 10%, #ddd, rgba(0, 153, 255, 0.1)),
-    radial-gradient(2px 2px at 90% 60%, #fff, rgba(0, 212, 255, 0.2)),
-    radial-gradient(1px 1px at 30% 80%, #fff, rgba(0, 153, 255, 0.1)),
-    radial-gradient(1px 1px at 70% 40%, #fff, rgba(0, 212, 255, 0.15));
+    radial-gradient(1px 1px at 20% 30%, #00d4ff, rgba(0, 212, 255, 0.2)),
+    radial-gradient(1px 1px at 60% 70%, #00d4ff, rgba(0, 212, 255, 0.15)),
+    radial-gradient(1px 1px at 50% 50%, #00d4ff, rgba(0, 212, 255, 0.18)),
+    radial-gradient(1px 1px at 80% 10%, #00d4ff, rgba(0, 212, 255, 0.12)),
+    radial-gradient(1px 1px at 90% 60%, #00d4ff, rgba(0, 212, 255, 0.2)),
+    radial-gradient(1px 1px at 30% 80%, #00d4ff, rgba(0, 212, 255, 0.15)),
+    radial-gradient(1px 1px at 70% 40%, #00d4ff, rgba(0, 212, 255, 0.18));
   background-repeat: repeat;
-  background-size: 200% 200%;
+  background-size: 400% 400%;
   background-position: 0 0;
   opacity: 0.6;
   pointer-events: none;
   z-index: -2;
-  animation: starfieldAnimation 20s linear infinite;
+  animation: starfieldAnimation 30s linear infinite;
 }
 
 body::after {
@@ -128,12 +130,12 @@ a {
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  border: 1px solid rgba(0, 212, 255, 0.3);
+  border: 1px solid var(--glow-cyan);
   border-radius: 1rem;
-  background: linear-gradient(135deg, rgba(15, 23, 41, 0.95), rgba(26, 40, 71, 0.95));
+  background: linear-gradient(135deg, rgba(10, 15, 31, 0.95), rgba(26, 35, 65, 0.95));
   backdrop-filter: blur(15px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-              0 0 60px rgba(0, 212, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+              0 0 60px var(--glow-cyan);
   animation: fadeInUp 1.5s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
   max-width: 1000px;

@@ -13,12 +13,12 @@ const AmbientBackground = () => {
     const particleData = Array.from({ length: 60 }, (_, i) => {
       const types = ['circle', 'square', 'triangle', 'star'];
       const colors = [
-        'rgba(56, 189, 248, 0.4)',
-        'rgba(6, 182, 212, 0.3)',
-        'rgba(139, 92, 246, 0.3)',
-        'rgba(236, 72, 153, 0.3)',
-        'rgba(34, 197, 94, 0.3)',
-        'rgba(251, 191, 36, 0.3)'
+        'rgba(0, 212, 255, 0.8)',
+        'rgba(0, 153, 255, 0.6)',
+        'rgba(0, 212, 255, 0.7)',
+        'rgba(0, 153, 255, 0.5)',
+        'rgba(0, 212, 255, 0.6)',
+        'rgba(0, 153, 255, 0.7)'
       ];
 
       let size = 'small';

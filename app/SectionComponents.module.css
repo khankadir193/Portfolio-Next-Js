@@ -1,13 +1,13 @@
 .sectionTitle {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 3.5rem;
+  font-weight: 900;
   color: #00d4ff;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   position: relative;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  letter-spacing: 0.25em;
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
 }
 
 .sectionTitle::before {
@@ -59,9 +59,10 @@
 }
 
 .techTag.filled {
-  border: 1px solid rgba(0, 212, 255, 0.5);
-  color: #00d4ff;
-  background: rgba(0, 212, 255, 0.1);
+  border: 2px solid rgba(0, 212, 255, 0.9);
+  color: #ffffff;
+  background: rgba(0, 212, 255, 0.4);
+  font-weight: 700;
 }
 
 .techTag.filled:hover {
@@ -73,13 +74,13 @@
 
 /* Neon Card */
 .neonCard {
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 12px;
-  padding: 1.5rem;
-  background: rgba(0, 212, 255, 0.05);
+  border: 3px solid rgba(0, 212, 255, 0.9);
+  border-radius: 8px;
+  padding: 2.5rem;
+  background: rgba(0, 212, 255, 0.06);
   box-shadow: 
-    0 0 20px rgba(0, 212, 255, 0.1),
-    inset 0 0 20px rgba(0, 212, 255, 0.05);
+    0 0 50px rgba(0, 212, 255, 0.5),
+    inset 0 0 25px rgba(0, 212, 255, 0.1);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
