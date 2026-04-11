@@ -1,8 +1,8 @@
 'use client';
 
-import React, { memo } from 'react';
-import { Card, CardContent, Typography, Grid, Box, Chip, Avatar } from '@mui/material';
-import { Code, Work, School, Build, Web, Storage, Cloud } from '@mui/icons-material';
+import { memo } from 'react';
+import { Card, CardContent, Typography, Box, Chip, Avatar } from '@mui/material';
+import { Work, School } from '@mui/icons-material';
 
 const SkillCardComp = ({ title, skills, icon }) => (
   <Card sx={{

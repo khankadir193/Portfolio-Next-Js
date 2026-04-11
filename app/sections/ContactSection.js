@@ -48,8 +48,7 @@ export default function ContactSection() {
     setSubmitting(true);
     setStatus('');
 
-    console.log('Contact Form Data:', formData);
-    alert(`Message sent! (Demo)\\nName: ${formData.name}\\nEmail: ${formData.email}\\nSubject: ${formData.subject}\\nTo: abdulkadirk059@gmail.com`);
+    alert(`Message sent! (Demo)\nName: ${formData.name}\nEmail: ${formData.email}\nSubject: ${formData.subject}\nTo: abdulkadirk059@gmail.com`);
 
     setSubmitting(false);
     setStatus('success');
@@ -85,7 +84,7 @@ export default function ContactSection() {
         
         <Grid container spacing={4}>
           {/* Left - Form */}
-          <Grid item xs={12} lg={7}>
+          <Grid size={{ xs: 12, lg: 7 }}>
             <Paper elevation={0} sx={{
               p: { xs: 4, md: 6 },
               background: 'rgba(17, 24, 39, 0.85)',
@@ -96,7 +95,7 @@ export default function ContactSection() {
             }}>
               <form onSubmit={handleSubmit}>
                 <Grid container spacing={3}>
-                  <Grid item xs={12} sm={6}>
+                  <Grid size={{ xs: 12, sm: 6 }}>
                     <TextField
                       fullWidth
                       label="Full Name"
@@ -110,7 +109,7 @@ export default function ContactSection() {
                       }}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid size={{ xs: 12, sm: 6 }}>
                     <TextField
                       fullWidth
                       label="Email"

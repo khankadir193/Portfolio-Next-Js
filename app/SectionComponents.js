@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import styles from './SectionComponents.module.css';
 
 // Section Title with Neon styling

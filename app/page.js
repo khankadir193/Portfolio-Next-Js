@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import About from './About';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -30,8 +29,6 @@ const LazyContactSection = dynamic(() => import('./sections/ContactSection'), {
 });
 
 export default function Home() {
-  const navItems = ["about", "skills", "experience", "project", "education", "contact"];
-
   return (
     <>
       <Navbar />
