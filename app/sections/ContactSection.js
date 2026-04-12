@@ -76,7 +76,7 @@ export default function ContactSection() {
             </div>
 
             <div className={styles.socialLinks}>
-              <a href="https://linkedin.com/in/abdul-kadir-khan-77bb68291" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/abdul-kadir-pathan5439/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
                 <LinkedIn />
               </a>
               <a href="https://github.com/khankadir193" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="GitHub">

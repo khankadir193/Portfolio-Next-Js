@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import { Grid, Box } from '@mui/material';
 import { SectionTitle, TechTag } from '../SectionComponents';
 import styles from './SkillsSection.module.css';
@@ -10,6 +13,20 @@ export default function SkillsSection() {
     { title: 'Software', skills: skillsData.software, icon: '🛠️' }
   ];
 
+  const skillsListRefs = useRef([]);
+
+  useEffect(() => {
+    // Check if any skills list needs scrolling and add scrollable class
+    skillsListRefs.current.forEach((ref, index) => {
+      if (ref) {
+        const isScrollable = ref.scrollHeight > ref.clientHeight;
+        if (isScrollable) {
+          ref.classList.add(styles.scrollable);
+        }
+      }
+    });
+  }, []);
+
   return (
     <Box id="skills" sx={{ mb: 6, py: 4 }}>
       <SectionTitle>Skills</SectionTitle>
@@ -21,7 +38,10 @@ export default function SkillsSection() {
               <div className={styles.skillCardIcon}>{category.icon}</div>
               <h3 className={styles.skillCardTitle}>{category.title}</h3>
               
-              <div className={styles.skillsList}>
+              <div 
+                ref={el => skillsListRefs.current[index] = el}
+                className={styles.skillsList}
+              >
                 {category.skills.map((skill, idx) => (
                   <TechTag key={idx} label={skill} variant="outline" />
                 ))}

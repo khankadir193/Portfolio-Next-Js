@@ -63,7 +63,7 @@ export default function Footer() {
               <span className={styles.socialText}>GitHub</span>
             </a>
             <a 
-              href="https://linkedin.com/in/abdul-kadir-khan-77bb68291" 
+              href="https://www.linkedin.com/in/abdul-kadir-pathan5439/" 
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="LinkedIn"

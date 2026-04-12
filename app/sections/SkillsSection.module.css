@@ -63,6 +63,72 @@
   justify-content: center;
   flex-grow: 1;
   align-items: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 280px;
+  padding-right: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 212, 255, 0.3) transparent;
+}
+
+.skillsList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.skillsList::-webkit-scrollbar-track {
+  background: rgba(0, 212, 255, 0.05);
+  border-radius: 3px;
+}
+
+.skillsList::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.4);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.skillsList::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.6);
+}
+
+/* Scroll indicators for better UX */
+.skillsList::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(10, 10, 15, 0.8) 50%,
+    rgba(10, 10, 15, 0.95) 100%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skillsList.scrollable::after {
+  opacity: 1;
+}
+
+.skillCardContainer {
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  background: rgba(0, 212, 255, 0.05);
+  box-shadow: 
+    0 0 20px rgba(0, 212, 255, 0.1),
+    inset 0 0 20px rgba(0, 212, 255, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 @keyframes float {
