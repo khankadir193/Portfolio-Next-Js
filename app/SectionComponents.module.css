@@ -1,0 +1,246 @@
+.sectionTitle {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #00d4ff;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+}
+
+.sectionTitle::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
+}
+
+/* Tech Tags */
+.techTag {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.techTag.outline {
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: #a8b2d1;
+  background: transparent;
+}
+
+.techTag.outline:hover {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: #00d4ff;
+  color: #00d4ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 212, 255, 0.2);
+}
+
+.techTag.filled {
+  border: 2px solid rgba(0, 212, 255, 0.9);
+  color: #ffffff;
+  background: rgba(0, 212, 255, 0.4);
+  font-weight: 700;
+}
+
+.techTag.filled:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: #00d4ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+}
+
+/* Neon Card */
+.neonCard {
+  border: 3px solid rgba(0, 212, 255, 0.9);
+  border-radius: 8px;
+  padding: 2.5rem;
+  background: rgba(0, 212, 255, 0.06);
+  box-shadow: 
+    0 0 50px rgba(0, 212, 255, 0.5),
+    inset 0 0 25px rgba(0, 212, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.neonCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+  opacity: 0.6;
+}
+
+.neonCard:hover {
+  border-color: rgba(0, 212, 255, 0.6);
+  background: rgba(0, 212, 255, 0.08);
+  box-shadow: 
+    0 8px 30px rgba(0, 212, 255, 0.2),
+    inset 0 0 20px rgba(0, 212, 255, 0.1);
+  transform: translateY(-4px);
+}
+
+/* Card Content */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.cardHeaderLeft {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.cardIcon {
+  font-size: 1.5rem;
+  min-width: 30px;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-size: 1.3rem;
+  color: #00d4ff;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+}
+
+.cardSubtitle {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.cardPeriod {
+  color: #a8b2d1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cardDescription {
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Skills List */
+.skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Project Card */
+.projectHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.projectIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.projectTitle {
+  font-size: 1.3rem;
+  color: #00d4ff;
+  font-weight: 700;
+  margin: 0;
+}
+
+.projectDescription {
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.projectLink {
+  display: inline-block;
+  color: #00d4ff;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.projectLink:hover {
+  color: #0099ff;
+  text-decoration: underline;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+  }
+
+  .neonCard {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1.1rem;
+  }
+
+  .neonCard {
+    padding: 1rem;
+  }
+
+  .skillsList {
+    gap: 0.5rem;
+  }
+
+  .techTag {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+}

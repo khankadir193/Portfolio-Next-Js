@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './BackgroundName.module.css';
 
 const BackgroundName = () => {
@@ -18,7 +18,7 @@ const BackgroundName = () => {
       opacity: 0.03 + Math.random() * 0.05, // Very subtle opacity
       animationDelay: Math.random() * 10,
       animationDuration: 20 + Math.random() * 20,
-      color: ['#38bdf8', '#06b6d4', '#8b5cf6', '#ec4899', '#10b981'][Math.floor(Math.random() * 5)],
+      color: ['#00d4ff', '#00d4ff', '#0099ff', '#00d4ff', '#0099ff'][Math.floor(Math.random() * 5)],
     }));
     setNames(nameInstances);
   }, []);

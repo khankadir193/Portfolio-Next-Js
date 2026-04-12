@@ -1,20 +1,53 @@
-import { EducationCard } from '../CardComponents';
-import { Container, Typography, Grid, Box } from '@mui/material';
+'use client';
+
+import { Box } from '@mui/material';
+import { SectionTitle, TechTag } from '../SectionComponents';
+import styles from './EducationSection.module.css';
 import { educationData } from '../data/educationData';
 
 export default function EducationSection() {
   return (
-    <Box id="education" sx={{ mb: 6 }}>
-      <Typography variant="h3" component="h2" sx={{ mb: 4, color: 'primary.main', textAlign: 'center' }}>
-        Education
-      </Typography>
-      <Grid container spacing={3}>
+    <Box id="education" sx={{ mb: 6, py: 4 }}>
+      <SectionTitle>Education</SectionTitle>
+      
+      <div className={styles.educationContainer}>
         {educationData.map((edu, index) => (
-          <Grid item xs={12} md={6} key={index}>
-            <EducationCard {...edu} />
-          </Grid>
+          <div key={index} className={styles.educationItem}>
+            <div className={styles.timelineDot}></div>
+            <div className={styles.educationCard}>
+              <div className={styles.educationHeader}>
+                <div className={styles.iconWrapper}>
+                  <div className={styles.educationIcon}>🎓</div>
+                </div>
+                <div className={styles.headerContent}>
+                  <div className={styles.titleSection}>
+                    <div>
+                      <h4 className={styles.degree}>{edu.degree}</h4>
+                      <p className={styles.institution}>{edu.institution}</p>
+                    </div>
+                    <span className={styles.period}>{edu.period}</span>
+                  </div>
+                  {edu.cgpa && (
+                    <p className={styles.cgpaText}>{edu.cgpa}</p>
+                  )}
+                </div>
+              </div>
+              
+              {edu.description && (
+                <p className={styles.description}>{edu.description}</p>
+              )}
+              
+              {edu.skills && edu.skills.length > 0 && (
+                <div className={styles.skillsList}>
+                  {edu.skills.map((skill, idx) => (
+                    <TechTag key={idx} label={skill} variant="outline" />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         ))}
-      </Grid>
+      </div>
     </Box>
   );
 }

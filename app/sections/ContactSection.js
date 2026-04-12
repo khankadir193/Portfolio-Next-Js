@@ -1,16 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { 
-  Container, Box, TextField, Button, Typography, Grid, Paper, Alert 
-} from '@mui/material';
-import { Email, Phone, Send, Person, Subject as SubjectIcon, Message } from '@mui/icons-material';
+import { Box, TextField, Button, Grid, Paper } from '@mui/material';
+import { Email, Phone, LocationOn, LinkedIn, GitHub, Mail } from '@mui/icons-material';
+import styles from './ContactSection.module.css';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
     message: ''
   });
   const [errors, setErrors] = useState({});
@@ -32,7 +30,6 @@ export default function ContactSection() {
     if (!formData.name.trim()) newErrors.name = 'Name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
     else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
-    if (!formData.subject.trim()) newErrors.subject = 'Subject is required';
     if (!formData.message.trim()) newErrors.message = 'Message is required';
     return newErrors;
   };
@@ -48,221 +45,108 @@ export default function ContactSection() {
     setSubmitting(true);
     setStatus('');
 
-    console.log('Contact Form Data:', formData);
-    alert(`Message sent! (Demo)\\nName: ${formData.name}\\nEmail: ${formData.email}\\nSubject: ${formData.subject}\\nTo: abdulkadirk059@gmail.com`);
+    alert(`Message sent! (Demo)\nName: ${formData.name}\nEmail: ${formData.email}\nTo: abdulkadirk059@gmail.com`);
 
     setSubmitting(false);
     setStatus('success');
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
-
-  const inputIcons = {
-    name: <Person sx={{ color: 'rgba(56, 189, 248, 0.7)' }} />,
-    email: <Email sx={{ color: 'rgba(56, 189, 248, 0.7)' }} />,
-    subject: <SubjectIcon sx={{ color: 'rgba(56, 189, 248, 0.7)' }} />,
-    message: <Message sx={{ color: 'rgba(56, 189, 248, 0.7)' }} />
+    setFormData({ name: '', email: '', message: '' });
   };
 
   return (
-    <Box id="contact" sx={{ 
-      py: 8, 
-      background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
-      position: 'relative',
-      overflow: 'hidden'
-    }}>
-      <Container maxWidth="lg">
-        <Typography variant="h3" component="h2" sx={{ 
-          mb: 6, 
-          textAlign: 'center',
-          background: 'linear-gradient(135deg, #38bdf8, #06b6d4)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          fontWeight: 800,
-          fontSize: { xs: '2.5rem', md: '3.5rem' }
-        }}>
-          Get In Touch
-        </Typography>
-        
-        <Grid container spacing={4}>
-          {/* Left - Form */}
-          <Grid item xs={12} lg={7}>
-            <Paper elevation={0} sx={{
-              p: { xs: 4, md: 6 },
-              background: 'rgba(17, 24, 39, 0.85)',
-              backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(56, 189, 248, 0.2)',
-              borderRadius: '24px',
-              position: 'relative'
-            }}>
-              <form onSubmit={handleSubmit}>
-                <Grid container spacing={3}>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      label="Full Name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      error={!!errors.name}
-                      helperText={errors.name}
-                      InputProps={{
-                        startAdornment: inputIcons.name
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      label="Email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      error={!!errors.email}
-                      helperText={errors.email}
-                      InputProps={{
-                        startAdornment: inputIcons.email
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      label="Subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      error={!!errors.subject}
-                      helperText={errors.subject}
-                      InputProps={{
-                        startAdornment: inputIcons.subject
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      label="Message"
-                      name="message"
-                      multiline
-                      rows={5}
-                      value={formData.message}
-                      onChange={handleChange}
-                      error={!!errors.message}
-                      helperText={errors.message}
-                      InputProps={{
-                        startAdornment: inputIcons.message
-                      }}
-                    />
-                  </Grid>
-                </Grid>
+    <Box id="contact" sx={{ py: 8, position: 'relative', overflow: 'hidden' }}>
+      <div className={styles.sectionTitle}>Get In Touch</div>
+      
+      <Grid container spacing={4} sx={{ maxWidth: '1200px', margin: '0 auto', px: 2 }}>
+        {/* Left - Contact Info */}
+        <Grid size={{ xs: 12, lg: 5 }}>
+          <div className={styles.contactCard}>
+            <div className={styles.contactInfo}>
+              <div className={styles.infoItem}>
+                <Mail className={styles.infoIcon} />
+                <span className={styles.infoText}>abdulkadirk059@gmail.com</span>
+              </div>
+              <div className={styles.infoItem}>
+                <Phone className={styles.infoIcon} />
+                <span className={styles.infoText}>+91 7081071456</span>
+              </div>
+              <div className={styles.infoItem}>
+                <LocationOn className={styles.infoIcon} />
+                <span className={styles.infoText}>India</span>
+              </div>
+            </div>
 
-                <Button
-                  type="submit"
-                  fullWidth
-                  disabled={submitting}
-                  startIcon={<Send />}
-                  sx={{
-                    mt: 3,
-                    py: 2.5,
-                    background: 'linear-gradient(135deg, #38bdf8, #06b6d4)',
-                    borderRadius: '20px',
-                    fontSize: '1.1rem',
-                    fontWeight: 700,
-                    textTransform: 'none',
-                    color: 'white',
-                    boxShadow: '0 8px 25px rgba(56, 189, 248, 0.4)',
-                    '&:hover': {
-                      background: 'linear-gradient(135deg, #06b6d4, #38bdf8)',
-                      boxShadow: '0 12px 35px rgba(56, 189, 248, 0.5)',
-                      transform: 'translateY(-2px)'
-                    },
-                    '&:disabled': {
-                      background: 'rgba(56, 189, 248, 0.5)',
-                      color: 'white'
-                    }
-                  }}
-                >
-                  {submitting ? 'Sending...' : 'Send Message'}
-                </Button>
-
-                {status === 'success' && (
-                  <Paper sx={{ 
-                    mt: 3, 
-                    p: 3, 
-                    background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(74, 222, 128, 0.1))',
-                    border: '1px solid rgba(34, 197, 94, 0.5)',
-                    borderRadius: '20px',
-                    textAlign: 'center',
-                    boxShadow: '0 10px 30px rgba(34, 197, 94, 0.2)'
-                  }}>
-                    <Send sx={{ color: '#22c55e', fontSize: '2rem', mb: 2, mx: 'auto', display: 'block' }} />
-                    <Typography variant="h6" sx={{ color: '#22c55e', fontWeight: 700, mb: 1 }}>
-                      Message Sent Successfully!
-                    </Typography>
-                    <Typography sx={{ color: 'rgba(226, 232, 240, 0.8)' }}>
-                      Thank you! I'll get back to you soon.
-                    </Typography>
-                  </Paper>
-                )}
-              </form>
-            </Paper>
-          </Grid>
-
-          {/* Right - Contact Info */}
-          <Grid item xs={12} lg={5}>
-            <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <Typography variant="h4" sx={{ 
-                mb: 4, 
-                background: 'linear-gradient(135deg, #38bdf8, #06b6d4)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                fontWeight: 700
-              }}>
-                Let's Talk
-              </Typography>
-              <Typography sx={{ mb: 4, color: 'rgba(226, 232, 240, 0.9)', lineHeight: 1.8 }}>
-                Have a project in mind? I'd love to hear from you.
-              </Typography>
-
-              <Paper sx={{
-                p: 3,
-                background: 'rgba(17, 24, 39, 0.6)',
-                border: '1px solid rgba(56, 189, 248, 0.2)',
-                borderRadius: '16px',
-                mb: 3
-              }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <Email />
-                  <Box>
-                    <Typography variant="body2" sx={{ color: '#94a3b8' }}>Email</Typography>
-                    <Typography sx={{ fontWeight: 600 }}>
-                      abdulkadirk059@gmail.com
-                    </Typography>
-                  </Box>
-                </Box>
-              </Paper>
-
-              <Paper sx={{
-                p: 3,
-                background: 'rgba(17, 24, 39, 0.6)',
-                border: '1px solid rgba(56, 189, 248, 0.2)',
-                borderRadius: '16px'
-              }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <Phone />
-                  <Box>
-                    <Typography variant="body2" sx={{ color: '#94a3b8' }}>Phone</Typography>
-                    <Typography sx={{ fontWeight: 600 }}>
-                      +91 7081071456
-                    </Typography>
-                  </Box>
-                </Box>
-              </Paper>
-            </Box>
-          </Grid>
+            <div className={styles.socialLinks}>
+              <a href="https://linkedin.com/in/abdul-kadir-khan-77bb68291" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
+                <LinkedIn />
+              </a>
+              <a href="https://github.com/khankadir193" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="GitHub">
+                <GitHub />
+              </a>
+              <a href="mailto:abdulkadirk059@gmail.com" className={styles.socialIcon} aria-label="Email">
+                <Mail />
+              </a>
+            </div>
+          </div>
         </Grid>
-      </Container>
+
+        {/* Right - Contact Form */}
+        <Grid size={{ xs: 12, lg: 7 }}>
+          <form onSubmit={handleSubmit} className={styles.contactForm}>
+            <div className={styles.formGroup}>
+              <label className={styles.formLabel}>Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className={styles.formInput}
+                placeholder="Your name"
+              />
+              {errors.name && <span className={styles.errorText}>{errors.name}</span>}
+            </div>
+
+            <div className={styles.formGroup}>
+              <label className={styles.formLabel}>Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className={styles.formInput}
+                placeholder="Your email"
+              />
+              {errors.email && <span className={styles.errorText}>{errors.email}</span>}
+            </div>
+
+            <div className={styles.formGroup}>
+              <label className={styles.formLabel}>Message</label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                className={styles.formTextarea}
+                placeholder="Your message"
+                rows={4}
+              />
+              {errors.message && <span className={styles.errorText}>{errors.message}</span>}
+            </div>
+
+            <button 
+              type="submit" 
+              disabled={submitting}
+              className={styles.submitButton}
+            >
+              {submitting ? 'Sending...' : 'Send Message'}
+            </button>
+
+            {status === 'success' && (
+              <div className={styles.successMessage}>
+                Message sent successfully! I'll get back to you soon.
+              </div>
+            )}
+          </form>
+        </Grid>
+      </Grid>
     </Box>
   );
 }
