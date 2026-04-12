@@ -64,7 +64,14 @@ export default function Hero() {
   };
 
   const handleDownloadCV = () => {
-    window.open('/cv/Kadir-CV.pdf', '_blank');
+    const link = document.createElement('a');
+    link.href = '/cv/Kadir-CV.pdf';
+    link.download = 'Kadir-CV.pdf';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (

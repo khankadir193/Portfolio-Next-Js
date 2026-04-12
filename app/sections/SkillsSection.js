@@ -7,7 +7,7 @@ export default function SkillsSection() {
   const skillCategories = [
     { title: 'Frontend', skills: skillsData.frontend, icon: '🎨' },
     { title: 'Backend', skills: skillsData.backend, icon: '⚙️' },
-    { title: 'Software', skills: skillsData.others, icon: '🛠️' }
+    { title: 'Software', skills: skillsData.software, icon: '🛠️' }
   ];
 
   return (

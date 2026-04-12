@@ -69,6 +69,17 @@ export default function Navbar() {
             </a>
           </li>
         ))}
+        <li>
+          <a 
+            href="/cv/Kadir-CV.pdf" 
+            download="Kadir-CV.pdf"
+            className="download-resume-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download Resume
+          </a>
+        </li>
       </ul>
     </nav>
   );

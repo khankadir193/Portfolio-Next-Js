@@ -86,6 +86,18 @@ export default function ContactSection() {
                 <Mail />
               </a>
             </div>
+
+            <div className={styles.resumeSection}>
+              <a 
+                href="/cv/Kadir-CV.pdf" 
+                download="Kadir-CV.pdf"
+                className={styles.downloadResumeBtn}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download Resume
+              </a>
+            </div>
           </div>
         </Grid>
 

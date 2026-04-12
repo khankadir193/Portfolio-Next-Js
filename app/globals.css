@@ -341,7 +341,73 @@ a {
   background: rgba(0, 212, 255, 0.3);
   color: #00d4ff;
   border-color: rgba(0, 212, 255, 0.9);
-  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.4);
+}
+
+/* Download Resume Button Styling */
+.download-resume-btn {
+  display: block;
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.5rem;
+  color: #00d4ff !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(0, 212, 255, 0.7);
+  background: rgba(0, 212, 255, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  z-index: 1;
+}
+
+.download-resume-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    transparent 100%);
+  transition: left 0.6s ease;
+  z-index: -1;
+}
+
+.download-resume-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, 
+    rgba(0, 212, 255, 0.1) 0%, 
+    transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 0.5rem;
+}
+
+.download-resume-btn:hover {
+  background: rgba(0, 212, 255, 0.25);
+  color: #00d4ff !important;
+  transform: translateY(-3px);
+  border-color: rgba(0, 212, 255, 0.9);
+  box-shadow: 
+    0 8px 25px rgba(0, 212, 255, 0.4),
+    0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.download-resume-btn:hover::before {
+  left: 100%;
+}
+
+.download-resume-btn:hover::after {
+  opacity: 1;
 }
 
 .footer {
