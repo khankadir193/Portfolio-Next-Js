@@ -130,6 +130,98 @@ const handleNavClick = (e, item) => {
 - **URL Management**: Clean hash management
 - **Accessibility**: Proper ARIA labels and semantic HTML
 
+#### 🔄 Navigation Flow Diagram
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    NAVIGATION SYSTEM                           │
+├─────────────────────────────────────────────────────────────────┤
+│                                                         │
+│  [1b] Page Structure                                      │
+│  ┌─────────────────┬─────────────────┬─────────────────┐    │
+│  │   Navbar        │   Hero         │   Sections      │    │
+│  │ (Fixed)        │ (CTA Buttons)  │ (Lazy Loaded)  │    │
+│  └─────────────────┴─────────────────┴─────────────────┘    │
+│                                                         │
+│  [2b] Nav Click Handler                                   │
+│  ┌─────────────────────────────────────────────────────────────┐    │
+│  │ User Clicks Nav Item → setActiveSection(item)        │    │
+│  │ ├─ Special Cases:                                   │    │
+│  │ │  • about: scrollTo(0, smooth)               │    │
+│  │ │  • contact: scrollIntoView(smooth, block: end) │    │
+│  │ └─ Default: scrollIntoView(smooth)               │    │
+│  └─────────────────────────────────────────────────────────────┘    │
+│                                                         │
+│  [3b] Scroll Listener                                       │
+│  ┌─────────────────────────────────────────────────────────────┐    │
+│  │ useEffect(() => {                                 │    │
+│  │   const handleScroll = () => {                      │    │
+│  │     // Update active section based on scroll position    │    │
+│  │     const sections = ['skills', 'experience',         │    │
+│  │       'project', 'education', 'contact'];            │    │
+│  │     // Logic to determine current section             │    │
+│  │   };                                            │    │
+│  │   window.addEventListener('scroll', handleScroll);        │    │
+│  │   return () => window.removeEventListener('scroll',        │    │
+│  │     handleScroll);                                     │    │
+│  │ }, []);                                            │    │
+│  └─────────────────────────────────────────────────────────────┘    │
+│                                                         │
+│  Hero CTA Integration                                     │
+│  ┌─────────────────────────────────────────────────────────────┐    │
+│  │ View Projects Button → scrollTo('project')              │    │
+│  │ Download CV Button → open('/cv/Kadir-CV.pdf')       │    │
+│  └─────────────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+#### ⚙️ Technical Implementation Details
+
+**Navbar Component (`app/Navbar.js`)**
+- **Fixed Positioning**: `position: fixed` with `z-index: 9999`
+- **Active State Management**: `useState` for tracking current section
+- **Click Handler**: `handleNavClick(e, item)` with special cases
+- **Smooth Scrolling**: `scrollIntoView({ behavior: 'smooth' })`
+- **URL Management**: `window.history.replaceState()` for clean hashes
+
+**Hero Section (`app/Hero.js`)**
+- **CTA Buttons**: "View Projects" and "Download CV"
+- **Direct Navigation**: `scrollTo()` and `window.open()` methods
+- **3D Tilt Effect**: Mouse movement tracking with transform
+- **Responsive Design**: Mobile-optimized button layout
+
+**Section Components (`app/sections/`)**
+- **Lazy Loading**: `dynamic()` imports with loading states
+- **Smooth Scrolling**: Integrated with navbar scroll behavior
+- **Active State**: Visual feedback for current section
+- **Performance**: Optimized rendering with React.memo
+
+**Scroll Detection Logic**
+```javascript
+// Automatic section detection based on scroll position
+const getActiveSection = () => {
+  const scrollPosition = window.scrollY + window.innerHeight / 2;
+  // Check each section's position relative to viewport
+  sections.forEach(section => {
+    const element = document.getElementById(section);
+    if (element) {
+      const { offsetTop, offsetHeight } = element;
+      if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+        setActiveSection(section);
+        window.history.replaceState(null, null, `#${section}`);
+        return;
+      }
+    }
+  });
+};
+```
+
+**Performance Optimizations**
+- **Event Listeners**: Proper cleanup in useEffect return
+- **Debouncing**: Throttled scroll events for performance
+- **Memoization**: React.memo for component optimization
+- **Lazy Loading**: Code splitting with dynamic imports
+- **Smooth Animations**: CSS cubic-bezier easing functions
+
 ### 📥 Download Resume System
 - **Multiple Access Points**: Navbar, Hero, Contact sections
 - **File Management**: Proper PDF serving from `/cv/Kadir-CV.pdf`
