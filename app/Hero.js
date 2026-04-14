@@ -6,14 +6,15 @@ import styles from './Hero.module.css';
 export default function Hero() {
   const [typedText, setTypedText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
+  const [cursorBlink, setCursorBlink] = useState(true);
   const sectionRef = useRef(null);
 
   const fullText = "Hi, I'm Kadir - Frontend Engineer";
 
-  // Clean typing effect with proper cursor control
   useEffect(() => {
     let index = 0;
     let typingInterval;
+    let cursorInterval;
 
     const startTyping = () => {
       typingInterval = setInterval(() => {
@@ -27,14 +28,21 @@ export default function Hero() {
       }, 70);
     };
 
+    const startCursorBlink = () => {
+      cursorInterval = setInterval(() => {
+        setCursorBlink(!cursorBlink);
+      }, 500);
+    };
+
     startTyping();
+    startCursorBlink();
 
     return () => {
       if (typingInterval) clearInterval(typingInterval);
+      if (cursorInterval) clearInterval(cursorInterval);
     };
   }, []);
 
-  // Subtle 3D tilt (parent only)
   const handleMouseMove = useCallback((e) => {
     if (!sectionRef.current) return;
 
@@ -55,7 +63,6 @@ export default function Hero() {
     }
   };
 
-  // Clean button handlers with proper event handling
   const handleViewProjects = () => {
     const projectSection = document.getElementById('project');
     if (projectSection) {
@@ -85,18 +92,16 @@ export default function Hero() {
       <div className={styles.left}>
         <h1 className={styles.title}>
           {typedText}
-          <span 
+          <span
             className={`${styles.cursor} ${!isTyping ? styles.blink : ''}`}
           >
             |
           </span>
         </h1>
-
         <p className={styles.subtitle}>
           I build scalable, high-performance web applications using
           React, Next.js and modern frontend architecture.
         </p>
-
         <div className={styles.buttons}>
           <button
             type="button"
@@ -105,7 +110,6 @@ export default function Hero() {
           >
             View Projects
           </button>
-
           <button
             type="button"
             onClick={handleDownloadCV}
@@ -115,7 +119,6 @@ export default function Hero() {
           </button>
         </div>
       </div>
-
       <div className={styles.right}>
         <div className={styles.imageWrapper}>
           <Image

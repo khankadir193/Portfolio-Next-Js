@@ -96,11 +96,7 @@
 .buttons {
   display: flex;
   gap: 1rem;
-}
-
-.primaryBtn,
-.secondaryBtn {
-  padding: 1.2rem 3rem;
+  flex-wrap: wrap;
   border-radius: 12px;
   font-weight: 700;
   font-size: 1.1rem;
