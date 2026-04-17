@@ -1,5 +1,3 @@
-'use client';
-
 import { Box } from '@mui/material';
 import { SectionTitle, TechTag } from '../SectionComponents';
 import styles from './EducationSection.module.css';
