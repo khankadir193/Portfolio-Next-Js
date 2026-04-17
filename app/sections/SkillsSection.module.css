@@ -140,6 +140,21 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .skillCardContainer {
+    height: 420px;
+    padding: 1.8rem;
+  }
+
+  .skillCardTitle {
+    font-size: 1.2rem;
+  }
+
+  .skillsList {
+    max-height: 260px;
+  }
+}
+
 @media (max-width: 768px) {
   .skillCardContainer {
     height: 400px;
@@ -152,6 +167,33 @@
 
   .skillCardIcon {
     font-size: 2rem;
+  }
+
+  .skillsList {
+    gap: 0.6rem;
+    max-height: 240px;
+  }
+}
+
+@media (max-width: 600px) {
+  .skillCardContainer {
+    height: 380px;
+    padding: 1.2rem;
+  }
+
+  .skillCardTitle {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .skillCardIcon {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .skillsList {
+    gap: 0.5rem;
+    max-height: 200px;
   }
 }
 
@@ -173,5 +215,28 @@
 
   .skillsList {
     gap: 0.5rem;
+    max-height: 180px;
+  }
+}
+
+@media (max-width: 360px) {
+  .skillCardContainer {
+    height: 320px;
+    padding: 0.8rem;
+  }
+
+  .skillCardTitle {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .skillCardIcon {
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .skillsList {
+    gap: 0.4rem;
+    max-height: 160px;
   }
 }

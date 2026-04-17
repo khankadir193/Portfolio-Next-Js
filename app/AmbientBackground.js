@@ -3,13 +3,26 @@
 import { useState, useEffect } from 'react';
 import styles from './AmbientBackground.module.css';
 
+// Deterministic pseudo-random function for consistent hydration
+const seededRandom = (seed) => {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+};
+
 const AmbientBackground = () => {
   const [particles, setParticles] = useState([]);
   const [sparkles, setSparkles] = useState([]);
   const [shapes, setShapes] = useState([]);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // Generate random particle data only on client side
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
+    // Generate deterministic particle data only on client side
     const particleData = Array.from({ length: 60 }, (_, i) => {
       const types = ['circle', 'square', 'triangle', 'star'];
       const colors = [
@@ -26,41 +39,48 @@ const AmbientBackground = () => {
       if (i % 8 === 0) size = 'large';
       if (i % 12 === 0) size = 'xlarge';
 
+      const seed = i * 1000;
       return {
         id: i,
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        animationDelay: `${Math.random() * 25}s`,
-        animationDuration: `${20 + Math.random() * 15}s`,
+        left: `${seededRandom(seed) * 100}%`,
+        top: `${seededRandom(seed + 1) * 100}%`,
+        animationDelay: `${seededRandom(seed + 2) * 25}s`,
+        animationDuration: `${20 + seededRandom(seed + 3) * 15}s`,
         size,
-        type: types[Math.floor(Math.random() * types.length)],
-        color: colors[Math.floor(Math.random() * colors.length)],
-        direction: Math.random() > 0.5 ? 'up' : 'down',
+        type: types[Math.floor(seededRandom(seed + 4) * types.length)],
+        color: colors[Math.floor(seededRandom(seed + 5) * colors.length)],
+        direction: seededRandom(seed + 6) > 0.5 ? 'up' : 'down',
       };
     });
     setParticles(particleData);
 
     // Generate sparkle effects
-    const sparkleData = Array.from({ length: 30 }, (_, i) => ({
-      id: i,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      animationDelay: `${Math.random() * 15}s`,
-      size: Math.random() > 0.7 ? 'large' : 'small',
-    }));
+    const sparkleData = Array.from({ length: 30 }, (_, i) => {
+      const seed = i * 1000;
+      return {
+        id: i,
+        left: `${seededRandom(seed) * 100}%`,
+        top: `${seededRandom(seed + 1) * 100}%`,
+        animationDelay: `${seededRandom(seed + 2) * 15}s`,
+        size: seededRandom(seed + 3) > 0.7 ? 'large' : 'small',
+      };
+    });
     setSparkles(sparkleData);
 
     // Generate geometric shapes
-    const shapeData = Array.from({ length: 15 }, (_, i) => ({
-      id: i,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      animationDelay: `${Math.random() * 20}s`,
-      rotation: `${Math.random() * 360}deg`,
-      type: Math.random() > 0.5 ? 'hexagon' : 'diamond',
-    }));
+    const shapeData = Array.from({ length: 15 }, (_, i) => {
+      const seed = i * 1000;
+      return {
+        id: i,
+        left: `${seededRandom(seed) * 100}%`,
+        top: `${seededRandom(seed + 1) * 100}%`,
+        animationDelay: `${seededRandom(seed + 2) * 20}s`,
+        rotation: `${seededRandom(seed + 3) * 360}deg`,
+        type: seededRandom(seed + 4) > 0.5 ? 'hexagon' : 'diamond',
+      };
+    });
     setShapes(shapeData);
-  }, []);
+  }, [isClient]);
 
   return (
     <div className={styles.ambientBackground}>

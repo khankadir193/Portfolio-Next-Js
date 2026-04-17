@@ -262,6 +262,18 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .sectionTitle {
+    font-size: 2.2rem;
+    margin-bottom: 2.2rem;
+  }
+
+  .contactCard,
+  .contactForm {
+    padding: 2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .sectionTitle {
     font-size: 2rem;
@@ -275,6 +287,26 @@
 
   .socialLinks {
     margin-top: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .sectionTitle {
+    font-size: 1.8rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .contactCard,
+  .contactForm {
+    padding: 1.2rem;
+  }
+
+  .infoItem {
+    gap: 0.8rem;
+  }
+
+  .socialLinks {
+    gap: 0.8rem;
   }
 }
 
@@ -306,5 +338,36 @@
   .submitButton {
     font-size: 0.9rem;
     padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .sectionTitle {
+    font-size: 1.3rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .contactCard,
+  .contactForm {
+    padding: 0.8rem;
+  }
+
+  .infoItem {
+    gap: 0.6rem;
+  }
+
+  .socialLinks {
+    gap: 0.6rem;
+  }
+
+  .formInput,
+  .formTextarea {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .submitButton {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.8rem;
   }
 }

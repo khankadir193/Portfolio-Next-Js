@@ -1,15 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { GitHub, LinkedIn, Email, Phone } from '@mui/icons-material';
 import styles from './Footer.module.css';
 
 export default function Footer() {
-  const [currentYear, setCurrentYear] = useState(2024);
-
-  useEffect(() => {
-    setCurrentYear(new Date().getFullYear());
-  }, []);
+  // Use static year to avoid hydration mismatch
+  const currentYear = 2024;
 
   return (
     <footer className={styles.footer}>

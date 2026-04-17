@@ -3,25 +3,41 @@
 import { useState, useEffect } from 'react';
 import styles from './BackgroundName.module.css';
 
+// Deterministic pseudo-random function for consistent hydration
+const seededRandom = (seed) => {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+};
+
 const BackgroundName = () => {
   const [names, setNames] = useState([]);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // Generate multiple instances of the name with different properties
-    const nameInstances = Array.from({ length: 12 }, (_, i) => ({
-      id: i,
-      text: "ABDUL KADIR KHAN",
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      rotation: Math.random() * 360,
-      scale: 0.3 + Math.random() * 0.4, // 0.3 to 0.7 scale
-      opacity: 0.03 + Math.random() * 0.05, // Very subtle opacity
-      animationDelay: Math.random() * 10,
-      animationDuration: 20 + Math.random() * 20,
-      color: ['#00d4ff', '#00d4ff', '#0099ff', '#00d4ff', '#0099ff'][Math.floor(Math.random() * 5)],
-    }));
-    setNames(nameInstances);
+    setIsClient(true);
   }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+    
+    // Generate multiple instances of the name with deterministic properties
+    const nameInstances = Array.from({ length: 12 }, (_, i) => {
+      const seed = i * 1000;
+      return {
+        id: i,
+        text: "ABDUL KADIR KHAN",
+        x: seededRandom(seed) * 100,
+        y: seededRandom(seed + 1) * 100,
+        rotation: seededRandom(seed + 2) * 360,
+        scale: 0.3 + seededRandom(seed + 3) * 0.4, // 0.3 to 0.7 scale
+        opacity: 0.03 + seededRandom(seed + 4) * 0.05, // Very subtle opacity
+        animationDelay: seededRandom(seed + 5) * 10,
+        animationDuration: 20 + seededRandom(seed + 6) * 20,
+        color: ['#00d4ff', '#00d4ff', '#0099ff', '#00d4ff', '#0099ff'][Math.floor(seededRandom(seed + 7) * 5)],
+      };
+    });
+    setNames(nameInstances);
+  }, [isClient]);
 
   return (
     <div className={styles.backgroundNameContainer}>
