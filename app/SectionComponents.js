@@ -1,5 +1,3 @@
-'use client';
-
 import styles from './SectionComponents.module.css';
 
 // Section Title with Neon styling

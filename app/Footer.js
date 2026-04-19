@@ -1,5 +1,3 @@
-'use client';
-
 import { GitHub, LinkedIn, Email, Phone } from '@mui/icons-material';
 import styles from './Footer.module.css';
 

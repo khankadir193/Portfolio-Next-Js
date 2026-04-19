@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import PersonalityBadges from './components/PersonalityBadges';
 import styles from './About.module.css';
