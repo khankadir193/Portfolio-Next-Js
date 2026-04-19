@@ -3,6 +3,7 @@ import "./globals.css";
 import MuiThemeProvider from "./MuiThemeProvider";
 import AmbientBackground from "./AmbientBackground";
 import BackgroundName from "./BackgroundName";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
           <BackgroundName />
           {children}
         </MuiThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
