@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import styles from './Hero.module.css';
 
@@ -8,8 +8,9 @@ export default function Hero() {
   const [isTyping, setIsTyping] = useState(true);
   const [cursorBlink, setCursorBlink] = useState(true);
   const sectionRef = useRef(null);
+  const animationFrameRef = useRef(null);
 
-  const fullText = "Hi, I'm Kadir - Frontend Engineer";
+  const fullText = useMemo(() => "Hi, I'm Kadir - Frontend Engineer", []);
 
   useEffect(() => {
     let index = 0;
@@ -30,7 +31,7 @@ export default function Hero() {
 
     const startCursorBlink = () => {
       cursorInterval = setInterval(() => {
-        setCursorBlink(!cursorBlink);
+        setCursorBlink(prev => !prev);
       }, 500);
     };
 
@@ -41,36 +42,46 @@ export default function Hero() {
       if (typingInterval) clearInterval(typingInterval);
       if (cursorInterval) clearInterval(cursorInterval);
     };
-  }, []);
+  }, [fullText]);
 
   const handleMouseMove = useCallback((e) => {
     if (!sectionRef.current) return;
 
-    const rect = sectionRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    // Use requestAnimationFrame for smoother animations
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
 
-    const rotateX = (y - rect.height / 2) / 40;
-    const rotateY = (rect.width / 2 - x) / 40;
+    animationFrameRef.current = requestAnimationFrame(() => {
+      const rect = sectionRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-    sectionRef.current.style.transform =
-      `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      const rotateX = (y - rect.height / 2) / 40;
+      const rotateY = (rect.width / 2 - x) / 40;
+
+      // Use transform instead of changing layout properties
+      sectionRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
   }, []);
 
-  const resetTilt = () => {
-    if (sectionRef.current) {
-      sectionRef.current.style.transform = 'rotateX(0) rotateY(0)';
+  const resetTilt = useCallback(() => {
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
     }
-  };
+    if (sectionRef.current) {
+      sectionRef.current.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+    }
+  }, []);
 
-  const handleViewProjects = () => {
+  const handleViewProjects = useCallback(() => {
     const projectSection = document.getElementById('project');
     if (projectSection) {
       projectSection.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  }, []);
 
-  const handleDownloadCV = () => {
+  const handleDownloadCV = useCallback(() => {
     const link = document.createElement('a');
     link.href = '/cv/Kadir-CV.pdf';
     link.download = 'Kadir-CV.pdf';
@@ -79,7 +90,7 @@ export default function Hero() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  };
+  }, []);
 
   return (
     <section
@@ -88,12 +99,14 @@ export default function Hero() {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={resetTilt}
+      role="banner"
     >
       <div className={styles.left}>
         <h1 className={styles.title}>
           {typedText}
           <span
             className={`${styles.cursor} ${!isTyping ? styles.blink : ''}`}
+            aria-hidden="true"
           >
             |
           </span>
@@ -107,6 +120,7 @@ export default function Hero() {
             type="button"
             onClick={handleViewProjects}
             className={styles.primaryBtn}
+            aria-label="View my projects"
           >
             View Projects
           </button>
@@ -114,6 +128,7 @@ export default function Hero() {
             type="button"
             onClick={handleDownloadCV}
             className={styles.secondaryBtn}
+            aria-label="Download my CV"
           >
             Download CV
           </button>
@@ -123,9 +138,10 @@ export default function Hero() {
         <div className={styles.imageWrapper}>
           <Image
             src="/kadir.jpg"
-            alt="Kadir - Frontend Engineer"
+            alt="Abdul Kadir Khan - Frontend Engineer"
             fill
             priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className={styles.image}
           />
         </div>
