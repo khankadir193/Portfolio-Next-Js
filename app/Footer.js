@@ -3,7 +3,7 @@ import styles from './Footer.module.css';
 
 export default function Footer() {
   // Use static year to avoid hydration mismatch
-  const currentYear = 2024;
+  const currentYear = 2026;
 
   return (
     <footer className={styles.footer}>
