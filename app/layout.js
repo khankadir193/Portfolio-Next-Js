@@ -1,35 +1,87 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MuiThemeProvider from "./MuiThemeProvider";
-import AmbientBackground from "./AmbientBackground";
-import BackgroundName from "./BackgroundName";
+import BackgroundComponents from "./BackgroundComponents";
+
+// Critical CSS - inlined for performance
+const criticalCSS = `
+:root{--background:#0a0a0f;--surface:#0f0f1a;--surface-border:#1a1a2e;--text:#ffffff;--muted:#b8b8c8;--accent:#00d4ff;--neon-cyan:#00d4ff;--neon-blue:#0099ff;--glow-cyan:rgba(0,212,255,.9);--glow-blue:rgba(0,153,255,.7)}html,body{width:100vw;min-height:100%;max-width:100vw;overflow-x:hidden}*{box-sizing:border-box;margin:0;padding:0}body{background:linear-gradient(135deg,#0a0a0f 0%,#0f0f1a 50%,#0a0a0f 100%);color:var(--text);font-family:var(--font-geist-sans),Arial,sans-serif;line-height:1.5;max-width:100vw;overflow-x:hidden;position:relative}.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;background:rgba(10,10,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,212,255,.2);border-radius:0 0 20px 20px;box-shadow:0 4px 20px rgba(0,0,0,.5);transition:all .3s ease}.navbar-content{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto}.navbar-brand{font-size:1.5rem;font-weight:700;color:#00d4ff;text-shadow:0 0 10px rgba(0,212,255,.5);text-decoration:none;white-space:nowrap}.nav-links{display:flex;gap:2rem;list-style:none;margin:0;padding:0}.nav-link{color:#ffffff;text-decoration:none;font-weight:500;font-size:1rem;transition:all .3s ease;position:relative;white-space:nowrap}.nav-link:hover{color:#00d4ff}.hero{min-height:100vh;display:flex;align-items:center;justify-content:space-between;padding:6rem 2rem 2rem;max-width:1400px;margin:0 auto;position:relative;z-index:1}.left{flex:1;max-width:600px;margin-right:2rem}.title{font-size:clamp(2rem,5vw,4rem);font-weight:800;margin-bottom:1.5rem;color:#ffffff;line-height:1.2;text-shadow:0 0 30px rgba(0,212,255,.5)}.subtitle{font-size:1.25rem;color:#b8b8c8;margin-bottom:2rem;line-height:1.6}.buttons{display:flex;gap:1rem;flex-wrap:wrap}.primaryBtn,.secondaryBtn{padding:1rem 2rem;border:none;border-radius:50px;font-weight:600;font-size:1rem;cursor:pointer;transition:all .3s ease;text-decoration:none;display:inline-block}.primaryBtn{background:linear-gradient(45deg,#00d4ff,#0099ff);color:#0a0a0f}.secondaryBtn{background:transparent;color:#00d4ff;border:2px solid #00d4ff}.right{flex:0 0 400px;display:flex;justify-content:center;align-items:center}.imageWrapper{position:relative;width:350px;height:350px;border-radius:20px;overflow:hidden;border:3px solid rgba(0,212,255,.3);box-shadow:0 0 40px rgba(0,212,255,.3)}.image{object-fit:cover}@media (max-width:768px){.navbar{padding:1rem}.navbar-content{flex-direction:column;gap:1rem}.nav-links{gap:1rem}.hero{flex-direction:column;padding:6rem 1rem 2rem;text-align:center}.left{margin-right:0;margin-bottom:2rem}.right{flex:1;width:100%}.imageWrapper{width:280px;height:280px}.buttons{justify-content:center}}
+`;
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: 'swap',
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: 'swap',
+  preload: false,
 });
 
 export const metadata = {
   title: "Abdul Kadir Khan - Personal Portfolio",
-  description: "Portfolio website of Abdul Kadir Khan - Full Stack Developer",
+  description: "Portfolio website of Abdul Kadir Khan - Full Stack Developer | React, Next.js, Modern Web Development",
   icons: {
     icon: '/globe.svg',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://abdulkadirkhan.dev',
+    title: 'Abdul Kadir Khan - Full Stack Developer',
+    description: 'Portfolio website showcasing modern web development skills with React, Next.js, and cutting-edge technologies.',
+    siteName: 'Abdul Kadir Khan Portfolio',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Abdul Kadir Khan - Full Stack Developer',
+    description: 'Portfolio website showcasing modern web development skills.',
+    creator: '@abdulkadirkhan',
+  },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <head>
+        <style dangerouslySetInnerHTML={{ __html: criticalCSS }} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        <meta name="theme-color" content="#00d4ff" />
+        <meta name="msapplication-TileColor" content="#0a0a0f" />
+      </head>
       <body suppressHydrationWarning={true}>
         <MuiThemeProvider>
-          <AmbientBackground />
-          <BackgroundName />
-          {children}
+          <main>
+            {children}
+          </main>
+          <BackgroundComponents />
         </MuiThemeProvider>
       </body>
     </html>

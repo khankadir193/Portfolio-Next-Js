@@ -53,7 +53,7 @@ body::before {
   background-repeat: repeat;
   background-size: 400% 400%;
   background-position: 0 0;
-  opacity: 0.6;
+  opacity: 0.35;
   pointer-events: none;
   z-index: -2;
   animation: starfieldAnimation 30s linear infinite;
@@ -153,8 +153,8 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1.5rem;
-  padding: 0.75rem 2rem;
+  gap: 1rem;
+  padding: 0.4rem 1.5rem;
   border: 3px solid rgba(0, 212, 255, 0.95);
   border-radius: 0 0 0.5rem 0.5rem;
   background: linear-gradient(135deg, 
@@ -257,8 +257,8 @@ a {
 
 .nav-links {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-wrap: nowrap;
+  gap: 0.4rem;
   animation: fadeInUp 1.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -268,11 +268,11 @@ a {
 
 .nav-links li a {
   display: block;
-  padding: 0.5rem 1.2rem;
+  padding: 0.35rem 0.8rem;
   border-radius: 0.5rem;
   color: #ffffff;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   position: relative;
@@ -345,11 +345,11 @@ a {
 /* Download Resume Button Styling */
 .download-resume-btn {
   display: block;
-  padding: 0.5rem 1.2rem;
+  padding: 0.35rem 0.8rem;
   border-radius: 0.5rem;
   color: #00d4ff !important;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   position: relative;
@@ -556,36 +556,45 @@ a {
 @media (max-width: 1024px) {
   .navbar {
     width: 100vw;
-    padding: 1rem 2rem;
-    gap: 1.5rem;
+    padding: 0.4rem 1.5rem;
+    gap: 0.8rem;
   }
   .brand {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   .nav-links li a {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.95rem;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
+  }
+  .download-resume-btn {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
   }
 }
 
 @media (max-width: 768px) {
   .navbar {
     width: 100vw;
-    padding: 0.8rem 1.5rem;
-    gap: 1rem;
+    padding: 0.4rem 1rem;
+    gap: 0.6rem;
     border-radius: 0.6rem;
   }
   .brand {
-    font-size: 1.1rem;
+    font-size: 1rem;
     letter-spacing: 0.05em;
   }
   .nav-links {
-    gap: 0.4rem;
+    gap: 0.3rem;
+    flex-wrap: wrap;
   }
   .nav-links li a {
-    padding: 0.5rem 0.9rem;
-    font-size: 0.9rem;
-    border-radius: 0.6rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    border-radius: 0.4rem;
+  }
+  .download-resume-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
   }
   .footer {
     padding: 1.5rem 0.8rem;
@@ -598,55 +607,50 @@ a {
 @media (max-width: 600px) {
   .navbar {
     flex-direction: column;
-    gap: 0.8rem;
-    padding: 0.7rem 1rem;
+    gap: 0.5rem;
+    padding: 0.5rem 0.8rem;
     width: 100vw;
     border-radius: 0.5rem;
   }
   .brand {
-    font-size: 1rem;
+    font-size: 0.95rem;
     text-align: center;
     letter-spacing: 0.03em;
   }
   .nav-links {
-    gap: 0.3rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .nav-links li a {
-    padding: 0.4rem 0.7rem;
-    font-size: 0.85rem;
-    border-radius: 0.4rem;
-  }
-  .nav-links {
-    gap: 0.2rem;
+    gap: 0.25rem;
     justify-content: center;
     flex-wrap: wrap;
     order: 1;
   }
   .nav-links li a {
-    padding: 0.35rem 0.6rem;
-    font-size: 0.85rem;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
     border-radius: 0.3rem;
-    flex: 1 1 auto;
-    min-width: 80px;
-    text-align: center;
+  }
+  .download-resume-btn {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
   }
 }
 
 @media (max-width: 480px) {
   .navbar {
-    padding: 0.6rem 0.4rem;
+    padding: 0.4rem 0.3rem;
     max-width: 90vw;
   }
   .brand {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
   .nav-links {
     gap: 0.15rem;
   }
   .nav-links li a {
-    padding: 0.3rem 0.5rem;
-    font-size: 0.75rem;
+    padding: 0.25rem 0.4rem;
+    font-size: 0.7rem;
+  }
+  .download-resume-btn {
+    padding: 0.25rem 0.4rem;
+    font-size: 0.7rem;
   }
 }
