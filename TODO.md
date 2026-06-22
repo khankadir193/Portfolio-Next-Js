@@ -1,19 +1,8 @@
-# Performance Improvement TODO
+# TODO
 
-## Plan Summary
-- Dynamic lazy-load sections in page.js (reduce initial JS bundle).
-- Memoize CardComponents (prevent re-renders).
-- Verify build/no errors.
-
-## Steps
-- [x] 1. Edit app/page.js: Add dynamic imports for SkillsSection, ExperienceSection, ProjectsSection, EducationSection, ContactSection + Skeleton loading.
-- [x] 2. Edit app/CardComponents.js: Wrap all Card exports in React.memo.
-
-- [x] 3. Run \`npm run build\` and check for errors/bundle sizes (build succeeded).
-- [x] 4. Test \`npm run dev\` and Lighthouse scores (dev server running).
-
-- [x] 5. Complete & measure improvements.
-
-✅ Task complete: Run Lighthouse at http://localhost:3001 for 90+ perf score.
-
+- [ ] Identify hydration mismatch root cause
+- [ ] Remove global hydration suppression in `app/layout.js` to reveal real mismatch
+- [ ] Guard `BackgroundComponents` so it only renders after mount in `app/ClientProviders.jsx`
+- [ ] Stabilize `Hero` initial render so server/client HTML match in `app/Hero.js`
+- [ ] Run `npm run dev` (or `npm run build` + `npm start`) and confirm hydration error is gone
 

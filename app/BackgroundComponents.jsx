@@ -13,10 +13,12 @@ const BackgroundName = dynamic(() => import("./BackgroundName"), {
 });
 
 export default function BackgroundComponents() {
+
   return (
-    <>
+    <div data-debug="background-components">
       <AmbientBackground />
       <BackgroundName />
-    </>
+    </div>
   );
 }
+
