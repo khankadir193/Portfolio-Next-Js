@@ -4,18 +4,27 @@ import Image from 'next/image';
 import styles from './Hero.module.css';
 
 export default function Hero() {
+  const [isMounted, setIsMounted] = useState(false);
   const [typedText, setTypedText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
   const [cursorBlink, setCursorBlink] = useState(true);
+
   const sectionRef = useRef(null);
   const animationFrameRef = useRef(null);
 
   const fullText = useMemo(() => "Hi, I'm Kadir - Frontend Engineer", []);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     let index = 0;
     let typingInterval;
     let cursorInterval;
+
 
     const startTyping = () => {
       typingInterval = setInterval(() => {
@@ -42,7 +51,8 @@ export default function Hero() {
       if (typingInterval) clearInterval(typingInterval);
       if (cursorInterval) clearInterval(cursorInterval);
     };
-  }, [fullText]);
+  }, [fullText, isMounted]);
+
 
   const handleMouseMove = useCallback((e) => {
     if (!sectionRef.current) return;

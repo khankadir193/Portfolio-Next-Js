@@ -18,10 +18,18 @@ export const projectsData = [
   },
   {
     title: 'Portfolio Website',
-    description: 'A responsive personal portfolio website built with React Js and Material UI, showcasing skills, experience, and projects.',
-    technologies: ['React.js', 'Material UI', 'JavaScript', 'HTML', 'CSS'],
+    description: 'Developed a modern, responsive portfolio application using React.js and Styled Components to highlight professional projects, technical expertise, and career achievements. Focused on component-based architecture, responsive design, performance optimization, and user-friendly navigation to deliver a polished frontend experience.',
+    technologies: ['React.js','JavaScript', 'HTML5', 'CSS3','Styled Components','Git','GitHub Pages'],
     link: 'https://abdulkadirkhan786.netlify.app/',
     // icon: '??',
     period: 'Aug 2023 - OCT 2023'
+  },
+  {
+    title: 'AI SaaS Dashboard',
+    description: 'Built a production-ready, multi-tenant SaaS dashboard with React, Redux Toolkit, Supabase, Tailwind CSS, and Recharts. Implemented secure authentication, tenant-aware data isolation, and role-based access control (RBAC) with protected routing. Delivered AI-powered chat/insights, interactive analytics dashboards, invitation-based onboarding, and real-time KPI reporting—optimized via lazy loading, caching, code splitting, and reduced re-renders.',
+    technologies: ['React', 'Redux Toolkit', 'Supabase', 'Tailwind CSS', 'Recharts'],
+    link: 'https://ai-dasboard.vercel.app/dashboard',
+    // icon: '??',
+    period: '2025–Present'
   }
 ];
