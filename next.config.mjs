@@ -7,6 +7,11 @@ const nextConfig = {
     optimizeCss: true,
     optimizeServerReact: true,
     scrollRestoration: true,
+    optimizePackageImports: ['@mui/material', '@mui/icons-material'],
+  },
+
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
   },
   
   // Image optimization
@@ -19,9 +24,6 @@ const nextConfig = {
   
   // Compression
   compress: true,
-  
-  // Code splitting
-  swcMinify: true,
   
   // Security headers
   async headers() {
@@ -69,27 +71,6 @@ const nextConfig = {
     ];
   },
   
-  // Bundle optimization
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
-          },
-          mui: {
-            test: /[\\/]node_modules[\\/]@mui[\\/]/,
-            name: 'mui',
-            chunks: 'all',
-          },
-        },
-      };
-    }
-    return config;
-  },
 };
 
 export default nextConfig;

@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useMemo } from 'react';
-import { Grid, Box } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 import { SectionTitle, TechTag } from '../SectionComponents';
 import styles from './SkillsSection.module.css';
 import { skillsData } from '../data/skillsData';
