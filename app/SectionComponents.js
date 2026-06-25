@@ -70,9 +70,11 @@ export const ProjectCardComponent = ({
       ))}
     </div>
     {link && link !== '#' && (
-      <a href={link} target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
-        View Project →
-      </a>
+      <div className={styles.projectLinkWrapper}>
+        <a href={link} target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
+          View Project →
+        </a>
+      </div>
     )}
   </NeonCard>
 );

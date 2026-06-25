@@ -32,7 +32,7 @@ export default function Footer() {
 
         {/* Contact Section */}
         <div className={styles.contactSection}>
-          <h3 className={styles.sectionTitle}>Get In Touch</h3>
+          <h3 className={styles.sectionTitle}>Contact</h3>
           <div className={styles.contactInfo}>
             <div className={styles.contactItem}>
               <Phone className={styles.contactIcon} />

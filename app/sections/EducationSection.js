@@ -5,7 +5,7 @@ import { educationData } from '../data/educationData';
 
 export default function EducationSection() {
   return (
-    <Box id="education" sx={{ mb: 6, py: 4 }}>
+    <Box id="education" sx={{ mb: 4, py: 2 }}>
       <SectionTitle>Education</SectionTitle>
       
       <div className={styles.educationContainer}>

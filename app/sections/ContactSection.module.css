@@ -1,48 +1,10 @@
-.sectionTitle {
-  font-size: 3.5rem;
-  font-weight: 900;
-  color: #00d4ff;
-  text-align: center;
-  margin-bottom: 2.5rem;
-  position: relative;
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  text-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
-}
-
-.sectionTitle::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
-}
-
-.sectionTitle::after {
-  content: '';
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
-}
-
 /* Contact Card - Left Side */
 .contactCard {
-  border: 3px solid rgba(0, 212, 255, 0.9);
-  border-radius: 8px;
-  padding: 2.5rem;
-  background: rgba(0, 212, 255, 0.06);
-  box-shadow: 
-    0 0 50px rgba(0, 212, 255, 0.5),
-    inset 0 0 25px rgba(0, 212, 255, 0.1);
+  border: var(--border-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-card);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -64,19 +26,22 @@
 }
 
 .contactCard:hover {
-  border-color: rgba(0, 212, 255, 0.6);
-  background: rgba(0, 212, 255, 0.08);
-  box-shadow: 
-    0 8px 30px rgba(0, 212, 255, 0.2),
-    inset 0 0 20px rgba(0, 212, 255, 0.1);
+  border-color: var(--border-card-hover);
+  background: var(--card-bg-hover);
+  box-shadow: var(--shadow-card-hover);
   transform: translateY(-4px);
+}
+
+.contactCard:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
 }
 
 .contactInfo {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
 .infoItem {
@@ -133,15 +98,16 @@
 
 /* Contact Form - Right Side */
 .contactForm {
-  border: 3px solid rgba(0, 212, 255, 0.9);
-  border-radius: 8px;
-  padding: 2.5rem;
-  background: rgba(0, 212, 255, 0.06);
-  box-shadow: 
-    0 0 50px rgba(0, 212, 255, 0.5),
-    inset 0 0 25px rgba(0, 212, 255, 0.1);
+  border: var(--border-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .contactForm::before {
@@ -156,14 +122,14 @@
 }
 
 .formGroup {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-3);
   display: flex;
   flex-direction: column;
 }
 
 .formLabel {
   color: #e2e8f0;
-  font-size: 0.95rem;
+  font-size: var(--body);
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
@@ -171,12 +137,12 @@
 .formInput,
 .formTextarea {
   width: 100%;
-  padding: 1rem 1.25rem;
+  padding: 0.875rem 1rem;
   background: rgba(0, 212, 255, 0.1);
-  border: 3px solid rgba(0, 212, 255, 0.7);
-  border-radius: 6px;
+  border: 1px solid rgba(0, 212, 255, 0.5);
+  border-radius: var(--radius-sm);
   color: #ffffff;
-  font-size: 1rem;
+  font-size: var(--body);
   font-family: inherit;
   transition: all 0.3s ease;
 }
@@ -191,7 +157,7 @@
   outline: none;
   border-color: #00d4ff;
   background: rgba(0, 212, 255, 0.12);
-  box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
 }
 
 .formTextarea {
@@ -210,18 +176,17 @@
   width: 100%;
   padding: 0.875rem 1.5rem;
   background: linear-gradient(135deg, #00d4ff, #0099ff);
-  border: 1px solid #00d4ff;
-  border-radius: 8px;
+  border: none;
+  border-radius: var(--radius-md);
   color: #ffffff;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 1.5rem;
+  margin-top: auto;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-  text-decoration: none;
 }
 
 .submitButton:hover:not(:disabled) {
@@ -239,15 +204,20 @@
   cursor: not-allowed;
 }
 
+.submitButton:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
 .successMessage {
-  margin-top: 1.5rem;
-  padding: 1rem;
+  margin-top: var(--space-3);
+  padding: var(--space-2);
   background: rgba(34, 197, 94, 0.15);
   border: 1px solid rgba(34, 197, 94, 0.5);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   color: #86efac;
   text-align: center;
-  font-size: 0.95rem;
+  font-size: var(--body);
   animation: slideIn 0.3s ease;
 }
 
@@ -263,26 +233,16 @@
 }
 
 @media (max-width: 1024px) {
-  .sectionTitle {
-    font-size: 2.2rem;
-    margin-bottom: 2.2rem;
-  }
-
   .contactCard,
   .contactForm {
-    padding: 2rem;
+    padding: var(--space-4);
   }
 }
 
 @media (max-width: 768px) {
-  .sectionTitle {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-
   .contactCard,
   .contactForm {
-    padding: 1.5rem;
+    padding: var(--space-3);
   }
 
   .socialLinks {
@@ -291,14 +251,9 @@
 }
 
 @media (max-width: 600px) {
-  .sectionTitle {
-    font-size: 1.8rem;
-    margin-bottom: 1.8rem;
-  }
-
   .contactCard,
   .contactForm {
-    padding: 1.2rem;
+    padding: var(--space-3);
   }
 
   .infoItem {
@@ -311,14 +266,9 @@
 }
 
 @media (max-width: 480px) {
-  .sectionTitle {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
   .contactCard,
   .contactForm {
-    padding: 1rem;
+    padding: var(--space-2);
   }
 
   .infoText {
@@ -326,13 +276,13 @@
   }
 
   .formLabel {
-    font-size: 0.85rem;
+    font-size: var(--caption);
   }
 
   .formInput,
   .formTextarea {
     padding: 0.65rem 0.75rem;
-    font-size: 0.85rem;
+    font-size: var(--caption);
   }
 
   .submitButton {
@@ -342,14 +292,9 @@
 }
 
 @media (max-width: 360px) {
-  .sectionTitle {
-    font-size: 1.3rem;
-    margin-bottom: 1.3rem;
-  }
-
   .contactCard,
   .contactForm {
-    padding: 0.8rem;
+    padding: var(--space-2);
   }
 
   .infoItem {

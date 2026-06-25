@@ -29,12 +29,12 @@ export default function SkillsSection() {
   }, []);
 
   return (
-    <Box id="skills" sx={{ mb: 6, py: 4 }} component="section" aria-labelledby="skills-heading">
+    <Box id="skills" sx={{ mb: 4, py: 2 }} component="section" aria-labelledby="skills-heading">
       <SectionTitle id="skills-heading">Skills</SectionTitle>
       
       <Grid container spacing={3} sx={{ maxWidth: '1000px', margin: '0 auto' }}>
         {skillCategories.map((category, index) => (
-          <Grid key={category.title} size={{ xs: 12, md: 4 }}>
+          <Grid key={category.title} size={{ xs: 12, sm: 6, md: 4 }} sx={{ display: 'flex' }}>
             <article className={styles.skillCardContainer}>
               <div className={styles.skillCardIcon} aria-hidden="true">{category.icon}</div>
               <h3 className={styles.skillCardTitle}>{category.title}</h3>

@@ -1,15 +1,14 @@
 .skillCardContainer {
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 12px;
-  padding: 2rem 1.5rem;
-  background: rgba(0, 212, 255, 0.05);
-  box-shadow: 
-    0 0 20px rgba(0, 212, 255, 0.1),
-    inset 0 0 20px rgba(0, 212, 255, 0.05);
+  border: var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-3);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-card);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  height: 450px;
+  min-height: 400px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,12 +27,15 @@
 }
 
 .skillCardContainer:hover {
-  border-color: rgba(0, 212, 255, 0.6);
-  background: rgba(0, 212, 255, 0.08);
-  box-shadow: 
-    0 8px 30px rgba(0, 212, 255, 0.2),
-    inset 0 0 20px rgba(0, 212, 255, 0.1);
+  border-color: var(--border-card-hover);
+  background: var(--card-bg-hover);
+  box-shadow: var(--shadow-card-hover);
   transform: translateY(-4px);
+}
+
+.skillCardContainer:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
 }
 
 .skillCardIcon {
@@ -113,24 +115,6 @@
   opacity: 1;
 }
 
-.skillCardContainer {
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 12px;
-  padding: 2rem 1.5rem;
-  background: rgba(0, 212, 255, 0.05);
-  box-shadow: 
-    0 0 20px rgba(0, 212, 255, 0.1),
-    inset 0 0 20px rgba(0, 212, 255, 0.05);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  height: 450px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
@@ -142,8 +126,8 @@
 
 @media (max-width: 1024px) {
   .skillCardContainer {
-    height: 420px;
-    padding: 1.8rem;
+    min-height: 380px;
+    padding: var(--space-3);
   }
 
   .skillCardTitle {
@@ -151,14 +135,14 @@
   }
 
   .skillsList {
-    max-height: 260px;
+    max-height: 240px;
   }
 }
 
 @media (max-width: 768px) {
   .skillCardContainer {
-    height: 400px;
-    padding: 1.5rem;
+    min-height: 360px;
+    padding: var(--space-3);
   }
 
   .skillCardTitle {
@@ -177,13 +161,13 @@
 
 @media (max-width: 600px) {
   .skillCardContainer {
-    height: 380px;
-    padding: 1.2rem;
+    min-height: auto;
+    padding: var(--space-3);
   }
 
   .skillCardTitle {
     font-size: 1rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: var(--space-3);
   }
 
   .skillCardIcon {
@@ -199,13 +183,13 @@
 
 @media (max-width: 480px) {
   .skillCardContainer {
-    height: 350px;
-    padding: 1rem;
+    min-height: auto;
+    padding: var(--space-2);
   }
 
   .skillCardTitle {
     font-size: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-2);
   }
 
   .skillCardIcon {
@@ -221,8 +205,8 @@
 
 @media (max-width: 360px) {
   .skillCardContainer {
-    height: 320px;
-    padding: 0.8rem;
+    min-height: auto;
+    padding: var(--space-2);
   }
 
   .skillCardTitle {
