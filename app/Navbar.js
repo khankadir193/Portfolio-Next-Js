@@ -1,25 +1,34 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+const NAV_ITEMS = ["about", "skills", "experience", "project", "education", "contact"];
 
 export default function Navbar() {
-  const navItems = ["about", "skills", "experience", "project", "education", "contact"];
   const [activeSection, setActiveSection] = useState('about');
+  const scrollTicking = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 100;
-      for (let i = navItems.length - 1; i >= 0; i--) {
-        const section = document.getElementById(navItems[i]);
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(navItems[i]);
-          break;
+      if (scrollTicking.current) return;
+      scrollTicking.current = true;
+
+      requestAnimationFrame(() => {
+        const scrollPosition = window.scrollY + 100;
+        for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
+          const section = document.getElementById(NAV_ITEMS[i]);
+          if (section && section.offsetTop <= scrollPosition) {
+            setActiveSection(NAV_ITEMS[i]);
+            break;
+          }
         }
-      }
+        scrollTicking.current = false;
+      });
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [navItems]);
+  }, []);
 
   const handleNavClick = (e, item) => {
     setActiveSection(item);
@@ -58,7 +67,7 @@ export default function Navbar() {
     <nav className="navbar">
       <h1 className="brand">Abdul Kadir Khan</h1>
       <ul className="nav-links">
-        {navItems.map((item) => (
+        {NAV_ITEMS.map((item) => (
           <li key={item}>
             <a
               href={`#${item}`}

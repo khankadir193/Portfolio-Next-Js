@@ -31,7 +31,6 @@ export default function About() {
                 src="/kadir.jpeg"
                 alt="Abdul Kadir Khan"
                 fill
-                priority
                 className={styles.profileImage}
               />
             </div>
