@@ -1,7 +1,7 @@
 .educationContainer {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--space-4);
   max-width: 950px;
   margin: 0 auto;
   position: relative;
@@ -9,7 +9,7 @@
 
 .educationItem {
   display: flex;
-  gap: 2rem;
+  gap: var(--space-4);
   position: relative;
 }
 
@@ -43,13 +43,11 @@
 
 .educationCard {
   flex: 1;
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 12px;
-  padding: 1.5rem;
-  background: rgba(0, 212, 255, 0.05);
-  box-shadow: 
-    0 0 20px rgba(0, 212, 255, 0.1),
-    inset 0 0 20px rgba(0, 212, 255, 0.05);
+  border: var(--border-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-card);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -67,19 +65,22 @@
 }
 
 .educationCard:hover {
-  border-color: rgba(0, 212, 255, 0.6);
-  background: rgba(0, 212, 255, 0.08);
-  box-shadow: 
-    0 8px 30px rgba(0, 212, 255, 0.2),
-    inset 0 0 20px rgba(0, 212, 255, 0.1);
+  border-color: var(--border-card-hover);
+  background: var(--card-bg-hover);
+  box-shadow: var(--shadow-card-hover);
   transform: translateY(-4px);
+}
+
+.educationCard:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
 }
 
 .educationHeader {
   display: flex;
-  gap: 1.5rem;
+  gap: var(--space-3);
   align-items: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-2);
 }
 
 .iconWrapper {
@@ -89,7 +90,7 @@
   min-width: 50px;
   height: 50px;
   background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 153, 255, 0.1));
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   border: 1px solid rgba(0, 212, 255, 0.3);
   flex-shrink: 0;
 }
@@ -110,7 +111,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem;
+  gap: var(--space-2);
   margin-bottom: 0.5rem;
 }
 
@@ -125,15 +126,15 @@
 }
 
 .institution {
-  font-size: 0.95rem;
-  color: #94a3b8;
+  font-size: var(--body);
+  color: #b0b8c8;
   margin: 0;
   font-weight: 500;
 }
 
 .period {
   color: #a8b2d1;
-  font-size: 0.9rem;
+  font-size: var(--caption);
   font-weight: 600;
   white-space: nowrap;
   text-align: right;
@@ -141,7 +142,7 @@
 }
 
 .cgpaText {
-  font-size: 0.85rem;
+  font-size: var(--caption);
   color: #cbd5e1;
   margin: 0.5rem 0 0 0;
   font-weight: 500;
@@ -149,10 +150,10 @@
 
 .description {
   color: #e2e8f0;
-  font-size: 0.95rem;
+  font-size: var(--body);
   line-height: 1.6;
-  margin: 1rem 0 0 0;
-  padding-top: 1rem;
+  margin: var(--space-2) 0 0 0;
+  padding-top: var(--space-2);
   border-top: 1px solid rgba(0, 212, 255, 0.2);
 }
 
@@ -165,7 +166,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: 1rem;
+  margin-top: var(--space-2);
 }
 
 @keyframes timelinePulse {
@@ -182,22 +183,22 @@
 @media (max-width: 1024px) {
   .educationContainer {
     max-width: 100%;
-    padding: 0 1rem;
+    padding: 0 var(--space-2);
   }
 
   .educationCard {
-    padding: 1.25rem;
+    padding: var(--space-3);
   }
 }
 
 @media (max-width: 768px) {
   .educationContainer {
-    gap: 1.5rem;
-    padding: 0 0.5rem;
+    gap: var(--space-3);
+    padding: 0 var(--space-2);
   }
 
   .educationItem {
-    gap: 1rem;
+    gap: var(--space-2);
   }
 
   .titleSection {
@@ -215,14 +216,14 @@
   }
 
   .educationCard {
-    padding: 1.25rem;
+    padding: var(--space-3);
   }
 }
 
 @media (max-width: 600px) {
   .educationContainer {
-    gap: 1.2rem;
-    padding: 0 0.25rem;
+    gap: var(--space-3);
+    padding: 0 var(--space-1);
   }
 
   .educationItem {
@@ -253,7 +254,7 @@
   }
 
   .institution {
-    font-size: 0.85rem;
+    font-size: var(--caption);
   }
 
   .period {
@@ -261,7 +262,7 @@
   }
 
   .educationCard {
-    padding: 1rem;
+    padding: var(--space-2);
   }
 
   .skillsList {
@@ -271,8 +272,8 @@
 
 @media (max-width: 480px) {
   .educationContainer {
-    gap: 1rem;
-    padding: 0 0.1rem;
+    gap: var(--space-2);
+    padding: 0 var(--space-1);
   }
 
   .educationItem {
@@ -302,16 +303,8 @@
     font-size: 1rem;
   }
 
-  .institution {
-    font-size: 0.85rem;
-  }
-
-  .period {
-    font-size: 0.8rem;
-  }
-
   .educationCard {
-    padding: 1rem;
+    padding: var(--space-2);
   }
 
   .skillsList {
@@ -321,7 +314,7 @@
 
 @media (max-width: 360px) {
   .educationContainer {
-    gap: 0.8rem;
+    gap: var(--space-2);
     padding: 0;
   }
 
@@ -348,20 +341,8 @@
     font-size: 1.2rem;
   }
 
-  .degree {
-    font-size: 0.9rem;
-  }
-
-  .institution {
-    font-size: 0.8rem;
-  }
-
-  .period {
-    font-size: 0.75rem;
-  }
-
   .educationCard {
-    padding: 0.8rem;
+    padding: var(--space-2);
   }
 
   .skillsList {

@@ -5,12 +5,12 @@ import { projectsData } from '../data/projectsData';
 
 export default function ProjectsSection() {
   return (
-    <Box id="project" sx={{ mb: 6, py: 4 }}>
+    <Box id="project" sx={{ mb: 4, py: 2 }}>
       <SectionTitle>Projects</SectionTitle>
       
       <Grid container spacing={3} sx={{ maxWidth: '1000px', margin: '0 auto' }}>
         {projectsData.map((proj, index) => (
-          <Grid key={index} size={{ xs: 12, md: 6 }}>
+          <Grid key={index} size={{ xs: 12, md: 6 }} sx={{ display: 'flex' }}>
             <ProjectCardComponent {...proj} />
           </Grid>
         ))}

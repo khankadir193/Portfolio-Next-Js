@@ -8,7 +8,7 @@ export default function ExperienceSection() {
   const mainExp = experiencesData.filter(exp => exp.type !== 'skills');
 
   return (
-    <Box id="experience" sx={{ mb: 6, py: 4 }}>
+    <Box id="experience" sx={{ mb: 4, py: 2 }}>
       <SectionTitle>Experience</SectionTitle>
       
       {/* Main Experiences */}

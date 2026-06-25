@@ -11,11 +11,11 @@ export default function About() {
           <h2 className={styles.sectionTitle}>About Me</h2>
           
           <p className={styles.bio}>
-            I&apos;m a passionate software engineer specializing in full-stack development. I have experience working with modern frontend and backend technologies to build high-quality, scalable web applications.
+            Frontend Developer with 4+ years of experience building scalable and user-friendly web applications using React.js, JavaScript, and Redux Toolkit. Experienced in developing responsive interfaces, integrating REST APIs, and optimizing application performance.
           </p>
 
           <p className={styles.bioSecondary}>
-            I&apos;m constantly learning and keeping up with the latest tech trends to stay ahead in an ever-evolving industry.
+            Currently expanding expertise in TypeScript and Next.js to build modern, high-performance web applications and deliver exceptional user experiences.
           </p>
 
           {/* Personality Badges */}
@@ -28,7 +28,7 @@ export default function About() {
             <div className={styles.neonRing}></div>
             <div className={styles.imageWrapper}>
               <Image
-                src="/kadir.jpg"
+                src="/kadir.jpeg"
                 alt="Abdul Kadir Khan"
                 fill
                 priority

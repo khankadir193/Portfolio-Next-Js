@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Box, TextField, Button, Grid, Paper } from '@mui/material';
 import { Email, Phone, LocationOn, LinkedIn, GitHub, Mail } from '@mui/icons-material';
+import { SectionTitle } from '../SectionComponents';
 import styles from './ContactSection.module.css';
 
 export default function ContactSection() {
@@ -53,8 +54,8 @@ export default function ContactSection() {
   };
 
   return (
-    <Box id="contact" sx={{ py: 8, position: 'relative', overflow: 'hidden' }}>
-      <div className={styles.sectionTitle}>Get In Touch</div>
+    <Box id="contact" sx={{ py: 4, position: 'relative', overflow: 'hidden' }}>
+      <SectionTitle>Get In Touch</SectionTitle>
       
       <Grid container spacing={4} sx={{ maxWidth: '1200px', margin: '0 auto', px: 2 }}>
         {/* Left - Contact Info */}
