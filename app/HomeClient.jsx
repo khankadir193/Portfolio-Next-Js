@@ -7,9 +7,9 @@ import About from './About';
 const Navbar = dynamic(() => import('./Navbar'), { ssr: false });
 const Footer = dynamic(() => import('./Footer'), { ssr: false });
 
-const Container = dynamic(() => import('@mui/material/Container'), { ssr: false });
-const Skeleton = dynamic(() => import('@mui/material/Skeleton'), { ssr: false });
-const Box = dynamic(() => import('@mui/material/Box'), { ssr: false });
+import Container from '@mui/material/Container';
+import Skeleton from '@mui/material/Skeleton';
+import Box from '@mui/material/Box';
 
 // Lazy-loaded section components with optimized loading
 const LazySkillsSection = lazy(() => import('./sections/SkillsSection'));

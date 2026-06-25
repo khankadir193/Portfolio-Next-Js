@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Box, TextField, Button, Grid, Paper } from '@mui/material';
-import { Email, Phone, LocationOn, LinkedIn, GitHub, Mail } from '@mui/icons-material';
+import { Phone, LocationOn, LinkedIn, GitHub, Mail } from '@mui/icons-material';
 import { SectionTitle } from '../SectionComponents';
 import styles from './ContactSection.module.css';
 
@@ -154,7 +154,7 @@ export default function ContactSection() {
 
             {status === 'success' && (
               <div className={styles.successMessage}>
-                Message sent successfully! I'll get back to you soon.
+                Message sent successfully! I&apos;ll get back to you soon.
               </div>
             )}
           </form>

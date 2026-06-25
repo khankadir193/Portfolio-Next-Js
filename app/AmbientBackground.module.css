@@ -251,6 +251,7 @@
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 C300,100 600,20 900,60 C1050,80 1200,40 1200,60 L1200,120 L0,120 Z" fill="rgba(56, 189, 248, 0.08)"/></svg>');
   background-size: 50% 100%;
   animation: waveMove 15s ease-in-out infinite;
+  will-change: transform;
 }
 
 .wave:nth-child(2) {
@@ -294,6 +295,7 @@
   border-radius: 50%;
   animation: orbDrift 50s ease-in-out infinite;
   filter: blur(20px);
+  will-change: transform;
 }
 
 .orb:nth-child(1) {
