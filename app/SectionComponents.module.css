@@ -269,8 +269,6 @@
 
 @media (max-width: 1024px) {
   .sectionTitle {
-    font-size: 1.8rem;
-    letter-spacing: 0.12em;
     margin-bottom: var(--space-4);
   }
   .sectionTitle::before,
@@ -285,8 +283,6 @@
 
 @media (max-width: 768px) {
   .sectionTitle {
-    font-size: 1.6rem;
-    letter-spacing: 0.1em;
     margin-bottom: var(--space-4);
   }
   .sectionTitle::before,
@@ -303,26 +299,15 @@
   .neonCard {
     padding: var(--space-3);
   }
-
-  .projectTitle,
-  .cardTitle {
-    font-size: 1.15rem;
-  }
 }
 
 @media (max-width: 480px) {
   .sectionTitle {
-    font-size: 1.35rem;
     margin-bottom: var(--space-3);
-    letter-spacing: 0.08em;
   }
 
   .neonCard {
     padding: var(--space-2);
-  }
-
-  .cardTitle {
-    font-size: 1.1rem;
   }
 
   .skillsList {

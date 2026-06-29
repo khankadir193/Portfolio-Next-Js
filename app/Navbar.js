@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 const NAV_ITEMS = ["about", "skills", "experience", "project", "education", "contact"];
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('about');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const scrollTicking = useRef(false);
 
   useEffect(() => {
@@ -30,43 +31,61 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e, item) => {
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setIsMenuOpen(false);
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isMenuOpen]);
+
+  const handleNavClick = useCallback((e, item) => {
+    setIsMenuOpen(false);
     setActiveSection(item);
-    
-    // Special handling for "about" - prevent hash and scroll to top
+
     if (item === 'about') {
-      e.preventDefault(); // Prevent URL hash only for about
-      window.history.replaceState(null, null, window.location.pathname); // Clear hash
+      e.preventDefault();
+      window.history.replaceState(null, null, window.location.pathname);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    
-    // Special handling for "contact" - scroll to bottom
+
     if (item === 'contact') {
-      e.preventDefault(); // Prevent default anchor jump
+      e.preventDefault();
       const section = document.getElementById(item);
       if (section) {
         section.scrollIntoView({ behavior: 'smooth', block: 'end' });
-        // Update URL with hash after smooth scroll starts
         window.history.replaceState(null, null, `#${item}`);
       }
       return;
     }
-    
-    // For other sections - prevent default and use smooth scrolling
-    e.preventDefault(); // Prevent default anchor jump
+
+    e.preventDefault();
     const section = document.getElementById(item);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
-      // Update URL with hash after smooth scroll starts
       window.history.replaceState(null, null, `#${item}`);
     }
-  };
+  }, []);
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" role="navigation" aria-label="Main navigation">
       <h1 className="brand">Abdul Kadir Khan</h1>
-      <ul className="nav-links">
+
+      <button
+        className={`navbar-toggle ${isMenuOpen ? 'active' : ''}`}
+        onClick={() => setIsMenuOpen((prev) => !prev)}
+        aria-label="Toggle navigation menu"
+        aria-expanded={isMenuOpen}
+        type="button"
+      >
+        <span className="navbar-toggle-bar"></span>
+        <span className="navbar-toggle-bar"></span>
+        <span className="navbar-toggle-bar"></span>
+      </button>
+
+      <ul className={`nav-links ${isMenuOpen ? 'mobile-open' : ''}`}>
         {NAV_ITEMS.map((item) => (
           <li key={item}>
             <a
@@ -79,8 +98,8 @@ export default function Navbar() {
           </li>
         ))}
         <li>
-          <a 
-            href="/cv/Kadir-CV.pdf" 
+          <a
+            href="/cv/Kadir-CV.pdf"
             download="Kadir-CV.pdf"
             className="download-resume-btn"
             target="_blank"

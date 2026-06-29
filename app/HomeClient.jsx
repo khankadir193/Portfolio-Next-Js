@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import About from './About';
 
 const Navbar = dynamic(() => import('./Navbar'), { ssr: false });
-const Footer = dynamic(() => import('./Footer'), { ssr: false });
+const Footer = dynamic(() => import('./Footer'));
 
 import Container from '@mui/material/Container';
 import Skeleton from '@mui/material/Skeleton';

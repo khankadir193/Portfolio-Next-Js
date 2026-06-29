@@ -23,7 +23,7 @@
 .modal {
   position: relative;
   width: 100%;
-  max-width: 560px;
+  max-width: 700px;
   max-height: 80vh;
   background: linear-gradient(135deg, rgba(10, 10, 15, 0.98), rgba(15, 15, 26, 0.98));
   border: 1px solid rgba(0, 212, 255, 0.3);

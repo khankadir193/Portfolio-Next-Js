@@ -306,6 +306,18 @@
     gap: var(--space-4);
     text-align: center;
   }
+
+  .brandSection,
+  .navSection,
+  .contactSection,
+  .socialSection {
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+  }
+
+  .brandSection {
+    border-bottom: none;
+  }
   
   .footerBrand {
     font-size: 1.7rem;
@@ -349,6 +361,10 @@
   
   .socialLink svg {
     font-size: 1.2rem;
+  }
+
+  .copyrightSection {
+    margin-top: 0;
   }
 }
 

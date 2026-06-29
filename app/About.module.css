@@ -155,6 +155,8 @@
   .container {
     gap: var(--space-4);
     padding: var(--space-4);
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   .imageContainer {
