@@ -74,9 +74,7 @@ export default function HomeClient() {
         </Container>
       </div>
 
-      <footer>
         <Footer />
-      </footer>
     </>
   );
 }

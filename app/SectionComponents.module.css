@@ -175,7 +175,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
 }
 
 .projectIcon {
@@ -191,15 +191,45 @@
 }
 
 .projectDescription {
-  color: #e2e8f0;
+  color: #c8d0e0;
   font-size: var(--body);
-  line-height: 1.6;
+  line-height: 1.65;
   margin-bottom: var(--space-2);
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   flex-shrink: 0;
+}
+
+/* Read More Button */
+.projectReadMore {
+  display: inline-block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #00d4ff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0;
+  margin-bottom: var(--space-2);
+  text-align: left;
+  transition: all 0.2s ease;
+  opacity: 0.6;
+  font-family: inherit;
+}
+
+.projectReadMore:hover {
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
+}
+
+.projectReadMore:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+  border-radius: 2px;
+  opacity: 1;
 }
 
 .projectLinkWrapper {
@@ -211,20 +241,30 @@
   display: inline-block;
   color: #00d4ff;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(0, 212, 255, 0.5);
+  border-radius: var(--radius-sm);
   transition: all 0.3s ease;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
 }
 
 .projectLink:hover {
-  color: #0099ff;
-  text-decoration: underline;
-  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  color: #ffffff;
+  background: rgba(0, 212, 255, 0.15);
+  border-color: #00d4ff;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  text-decoration: none;
+  text-shadow: 0 0 12px rgba(0, 212, 255, 0.5);
 }
 
 .projectLink:focus-visible {
   outline: 2px solid #00d4ff;
   outline-offset: 2px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 @media (max-width: 1024px) {
