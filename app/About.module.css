@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5rem 2rem 3rem;
+  padding: 5rem var(--space-4) var(--space-5);
   position: relative;
   overflow: hidden;
 }
@@ -149,12 +149,14 @@
 
 @media (max-width: 768px) {
   .about {
-    padding: 4rem 1rem 2rem;
+    padding: 4rem var(--space-3) var(--space-4);
   }
 
   .container {
     gap: var(--space-4);
     padding: var(--space-4);
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   .imageContainer {
@@ -173,7 +175,7 @@
 
 @media (max-width: 480px) {
   .about {
-    padding: 3rem 1rem 2rem;
+    padding: 3rem var(--space-3) var(--space-4);
   }
 
   .container {

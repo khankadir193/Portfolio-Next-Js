@@ -273,6 +273,7 @@
 
   .infoText {
     font-size: 0.9rem;
+    word-break: break-word;
   }
 
   .formLabel {

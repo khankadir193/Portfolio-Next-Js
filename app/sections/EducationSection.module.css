@@ -209,6 +209,20 @@
   .period {
     text-align: left;
     min-width: unset;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .timelineDot {
+    width: 35px;
+    min-width: 35px;
+    height: 35px;
+    margin-top: 0.75rem;
+  }
+
+  .timelineDot::after {
+    height: calc(100% + 1.5rem);
+    width: 2px;
   }
 
   .degree {

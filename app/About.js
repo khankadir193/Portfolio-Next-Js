@@ -31,6 +31,8 @@ export default function About() {
                 src="/kadir.jpeg"
                 alt="Abdul Kadir Khan"
                 fill
+                sizes="(max-width: 768px) 250px, (max-width: 1024px) 300px, 350px"
+                priority
                 className={styles.profileImage}
               />
             </div>

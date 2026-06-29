@@ -56,7 +56,8 @@ export const ProjectCardComponent = ({
   description, 
   technologies, 
   link,
-  icon = '📁'
+  icon = '📁',
+  onReadMore
 }) => (
   <NeonCard>
     <div className={styles.projectHeader}>
@@ -64,6 +65,14 @@ export const ProjectCardComponent = ({
       <h4 className={styles.projectTitle}>{title}</h4>
     </div>
     <p className={styles.projectDescription}>{description}</p>
+    <button
+      type="button"
+      className={styles.projectReadMore}
+      onClick={onReadMore}
+      aria-label={`Read more about ${title}`}
+    >
+      Read More →
+    </button>
     <div className={styles.skillsList}>
       {technologies.map((tech, idx) => (
         <TechTag key={idx} label={tech} variant="outline" />
