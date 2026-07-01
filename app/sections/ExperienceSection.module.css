@@ -111,13 +111,13 @@
 
 @media (max-width: 480px) {
   .experienceGroup {
-    padding: 0 0.1rem;
+    padding: 0 1rem;
     margin-bottom: 1rem;
   }
   
   .experienceContainer {
     gap: 0.8rem;
-    padding: 0 0.1rem;
+    padding: 0 1rem;
   }
 
   .groupTitle {
@@ -129,13 +129,13 @@
 
 @media (max-width: 360px) {
   .experienceGroup {
-    padding: 0;
+    padding: 0 0.75rem;
     margin-bottom: 0.8rem;
   }
   
   .experienceContainer {
     gap: 0.6rem;
-    padding: 0;
+    padding: 0 0.75rem;
   }
 
   .groupTitle {

@@ -184,7 +184,7 @@
 @media (max-width: 480px) {
   .skillCardContainer {
     min-height: auto;
-    padding: var(--space-2);
+    padding: var(--space-3);
   }
 
   .skillCardTitle {
@@ -199,7 +199,7 @@
 
   .skillsList {
     gap: 0.5rem;
-    max-height: 180px;
+    max-height: none;
   }
 }
 
@@ -221,6 +221,6 @@
 
   .skillsList {
     gap: 0.4rem;
-    max-height: 160px;
+    max-height: none;
   }
 }
