@@ -155,7 +155,8 @@
 
   .skillsList {
     gap: 0.6rem;
-    max-height: 240px;
+    max-height: none;
+    overflow-y: visible;
   }
 }
 
@@ -177,7 +178,8 @@
 
   .skillsList {
     gap: 0.5rem;
-    max-height: 200px;
+    max-height: none;
+    overflow-y: visible;
   }
 }
 
