@@ -57,27 +57,9 @@ export default function Navbar() {
   }, [isMenuOpen]);
 
   const handleNavClick = useCallback((e, item) => {
+    e.preventDefault();
     closeMenu();
     setActiveSection(item);
-
-    if (item === 'about') {
-      e.preventDefault();
-      window.history.replaceState(null, null, window.location.pathname);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-
-    if (item === 'contact') {
-      e.preventDefault();
-      const section = document.getElementById(item);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'end' });
-        window.history.replaceState(null, null, `#${item}`);
-      }
-      return;
-    }
-
-    e.preventDefault();
     const section = document.getElementById(item);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });

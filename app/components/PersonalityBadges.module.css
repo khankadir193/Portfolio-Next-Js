@@ -79,3 +79,21 @@
     font-size: 0.85rem;
   }
 }
+
+@media (max-width: 360px) {
+  .badgesContainer {
+    gap: 0.5rem;
+  }
+
+  .badge {
+    padding: 0.35rem 0.75rem;
+  }
+
+  .icon {
+    font-size: 0.9rem;
+  }
+
+  .label {
+    font-size: 0.8rem;
+  }
+}
