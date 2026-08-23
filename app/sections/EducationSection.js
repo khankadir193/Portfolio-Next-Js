@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import Box from '@mui/material/Box';
 import { SectionTitle, TechTag } from '../SectionComponents';
 import styles from './EducationSection.module.css';
 import { educationData } from '../data/educationData';

@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import Box from '@mui/material/Box';
 import { SectionTitle, ExperienceCardComponent } from '../SectionComponents';
 import styles from './ExperienceSection.module.css';
 import { experiencesData } from '../data/experiencesData';

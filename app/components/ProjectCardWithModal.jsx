@@ -3,43 +3,95 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { ProjectCardComponent } from '../SectionComponents';
 import { TechTag } from '../SectionComponents';
+import { lockScroll, unlockScroll } from '../utils/scrollLock';
 import styles from './ProjectCardWithModal.module.css';
+
+/** Selector string for all focusable elements inside a container */
+const FOCUSABLE = [
+  'button:not([disabled])',
+  '[href]',
+  'input:not([disabled])',
+  'select:not([disabled])',
+  'textarea:not([disabled])',
+  '[tabindex]:not([tabindex="-1"])',
+].join(', ');
 
 function ProjectModal({ project, onClose }) {
   const overlayRef = useRef(null);
   const previousFocusRef = useRef(null);
 
-  const handleKeyDown = useCallback((e) => {
-    if (e.key === 'Escape') {
-      onClose();
-    }
-  }, [onClose]);
-
-  const handleOverlayClick = useCallback((e) => {
-    if (e.target === overlayRef.current) {
-      onClose();
-    }
-  }, [onClose]);
+  const handleOverlayClick = useCallback(
+    (e) => {
+      if (e.target === overlayRef.current) {
+        onClose();
+      }
+    },
+    [onClose]
+  );
 
   useEffect(() => {
+    // Save the previously focused element for restoration on close
     previousFocusRef.current = document.activeElement;
 
-    document.addEventListener('keydown', handleKeyDown);
-    document.body.style.overflow = 'hidden';
+    // Apply ref-counted scroll lock — cooperates with Navbar mobile menu (Issue 10)
+    lockScroll();
 
-    const focusable = overlayRef.current?.querySelector(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
-    if (focusable) {
-      focusable.focus();
+    // Focus the first focusable element inside the modal
+    const focusable = overlayRef.current?.querySelectorAll(FOCUSABLE);
+    if (focusable && focusable.length > 0) {
+      focusable[0].focus();
     }
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
-      previousFocusRef.current?.focus();
+      unlockScroll();
+      // Restore focus to the element that triggered the modal.
+      // Guard against cases where the element may have been removed from the DOM.
+      try {
+        const target = previousFocusRef.current;
+        if (target && typeof target.focus === 'function' && document.contains(target)) {
+          target.focus();
+        }
+      } catch {
+        // Silently ignore focus errors on unmount
+      }
     };
-  }, [handleKeyDown]);
+  }, []);
+
+  // Escape key and focus trap — Issue 9
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+        return;
+      }
+
+      // Focus trap: keep Tab/Shift+Tab cycling inside the modal
+      if (e.key === 'Tab') {
+        const focusable = overlayRef.current?.querySelectorAll(FOCUSABLE);
+        if (!focusable || focusable.length === 0) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey) {
+          // Shift+Tab: if focus is on first element, wrap to last
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          // Tab: if focus is on last element, wrap to first
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
 
   return (
     <div
@@ -57,7 +109,15 @@ function ProjectModal({ project, onClose }) {
           aria-label="Close modal"
           type="button"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            aria-hidden="true"
+          >
             <path d="M18 6L6 18M6 6l12 12" />
           </svg>
         </button>

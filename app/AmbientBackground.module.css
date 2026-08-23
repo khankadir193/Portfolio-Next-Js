@@ -358,3 +358,18 @@
 .ambientBackground::after {
   display: none;
 }
+
+/* ─── Accessibility: Reduced Motion ────────────────────────────────────────
+   When the OS/browser preference is set to "reduce motion", pause all
+   decorative animations. Visual layout and color are preserved; only motion
+   is suppressed. Content-critical functionality is unaffected.
+   ─────────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .sparkle,
+  .shape,
+  .wave,
+  .orb {
+    animation-play-state: paused;
+  }
+}

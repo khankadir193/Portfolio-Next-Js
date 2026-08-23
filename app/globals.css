@@ -133,6 +133,33 @@ section[id] {
   box-sizing: border-box;
 }
 
+/* Replaces MUI Container maxWidth="lg" + sx={{ py: { xs: 2, sm: 3, md: 4 } }} */
+.page-container {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 16px;   /* xs: py=2 → 16px */
+  padding-bottom: 16px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+  .page-container {
+    padding-top: 24px;   /* sm: py=3 → 24px */
+    padding-bottom: 24px;
+  }
+}
+
+@media (min-width: 900px) {
+  .page-container {
+    padding-top: 32px;   /* md: py=4 → 32px */
+    padding-bottom: 32px;
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -166,16 +193,10 @@ section[id] {
 
 @keyframes navbarPulse {
   0%, 100% {
-    box-shadow: 
-      0 15px 50px rgba(0, 0, 0, 0.7),
-      0 0 60px rgba(0, 212, 255, 0.4),
-      inset 0 0 20px rgba(0, 212, 255, 0.08);
+    opacity: 0.97;
   }
   50% {
-    box-shadow: 
-      0 15px 50px rgba(0, 0, 0, 0.7),
-      0 0 80px rgba(0, 212, 255, 0.6),
-      inset 0 0 30px rgba(0, 212, 255, 0.12);
+    opacity: 1;
   }
 }
 
@@ -203,7 +224,7 @@ section[id] {
     inset 0 0 15px rgba(0, 212, 255, 0.06);
   animation: fadeInUp 1.5s cubic-bezier(0.4, 0, 0.2, 1), navbarPulse 6s ease-in-out infinite;
   width: 100vw;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   flex-wrap: nowrap;
 }

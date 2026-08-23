@@ -148,7 +148,7 @@
   }
 }
 
-/* Additional ambient effects */
+/* Additional ambient effects — filter:blur removed (caused expensive GPU layer promotion) */
 .backgroundNameContainer::before {
   content: '';
   position: absolute;
@@ -156,10 +156,9 @@
   left: 20%;
   width: 200px;
   height: 200px;
-  background: radial-gradient(circle, rgba(0, 255, 255, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.04) 0%, transparent 70%);
   border-radius: 50%;
   animation: subtlePulse 12s ease-in-out infinite;
-  filter: blur(50px);
 }
 
 .backgroundNameContainer::after {
@@ -172,7 +171,6 @@
   background: radial-gradient(circle, rgba(139, 92, 246, 0.02) 0%, transparent 70%);
   border-radius: 50%;
   animation: subtlePulse 15s ease-in-out infinite reverse;
-  filter: blur(40px);
 }
 
 @keyframes subtlePulse {
@@ -220,3 +218,13 @@
     font-size: clamp(1.2rem, 4vw, 2.5rem);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .floatingName,
+  .nameGlow,
+  .scatteredLetter,
+  .backgroundNameContainer::before,
+  .backgroundNameContainer::after {
+    animation-play-state: paused;
+  }
+}

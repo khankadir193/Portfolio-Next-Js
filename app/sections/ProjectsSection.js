@@ -1,4 +1,5 @@
-import { Grid, Box } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 import { SectionTitle } from '../SectionComponents';
 import ProjectCardWithModal from '../components/ProjectCardWithModal';
 import styles from './ProjectsSection.module.css';
