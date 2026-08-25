@@ -14,6 +14,17 @@ const NAME_COLORS = ['#00d4ff', '#00d4ff', '#0099ff', '#00d4ff', '#0099ff'];
 // Issue 5: Build data once outside React state using a lazy initialiser.
 // This component is loaded with ssr:false so there is no hydration mismatch.
 // Reduced from 12 instances to 8 for better performance (Issue 4).
+// Build scattered-letter data once at module level — same deterministic pattern
+// as particles/sparkles/shapes. Math.sin runs once on module load, never in render.
+const SCATTERED_LETTERS = 'ABDUL KADIR KHAN'
+  .split('')
+  .map((letter, index) => ({
+    char: letter === ' ' ? '' : letter,
+    delay: `${index * 0.5}s`,
+    left: `${10 + index * 8}%`,
+    top: `${20 + Math.sin(index) * 10}%`,
+  }));
+
 function buildNameInstances() {
   return Array.from({ length: 8 }, (_, i) => {
     const seed = i * 1000;
@@ -65,17 +76,17 @@ const BackgroundName = () => {
 
       {/* Scattered letters effect */}
       <div className={styles.scatteredLetters}>
-        {'ABDUL KADIR KHAN'.split('').map((letter, index) => (
+        {SCATTERED_LETTERS.map((item, index) => (
           <span
             key={index}
             className={styles.scatteredLetter}
             style={{
-              animationDelay: `${index * 0.5}s`,
-              left: `${10 + (index * 8)}%`,
-              top: `${20 + (Math.sin(index) * 10)}%`,
+              animationDelay: item.delay,
+              left: item.left,
+              top: item.top,
             }}
           >
-            {letter === ' ' ? '' : letter}
+            {item.char}
           </span>
         ))}
       </div>

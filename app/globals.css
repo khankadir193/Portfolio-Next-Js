@@ -160,6 +160,15 @@ section[id] {
   }
 }
 
+/* Replaces MUI Box sx={{ mb: 4, py: 2 }} — used by Experience and Education sections
+   after their MUI Box imports were removed for Server Component performance (Issue 5). */
+.experienceSection,
+.educationSection {
+  margin-bottom: 32px; /* mb: 4 → 4 * 8px = 32px */
+  padding-top: 16px;   /* py: 2 → 2 * 8px = 16px */
+  padding-bottom: 16px;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

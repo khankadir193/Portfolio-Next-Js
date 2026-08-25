@@ -25,12 +25,7 @@
   border-radius: 50%;
   animation: float 25s ease-in-out infinite;
   box-shadow: 0 0 10px currentColor;
-  transition: all 0.3s ease;
-}
-
-.particle:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 20px currentColor;
+  /* transition: all removed — triggered repaints on every animation frame */
 }
 
 /* Particle sizes */
@@ -295,7 +290,8 @@
   border-radius: 50%;
   animation: orbDrift 50s ease-in-out infinite;
   filter: blur(20px);
-  will-change: transform;
+  /* will-change removed — transform+opacity are compositor-friendly without hints;
+     explicit will-change on blurred elements forces 4 permanent GPU texture layers */
 }
 
 .orb:nth-child(1) {

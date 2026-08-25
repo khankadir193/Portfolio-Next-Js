@@ -1,11 +1,10 @@
-import Box from '@mui/material/Box';
 import { SectionTitle, TechTag } from '../SectionComponents';
 import styles from './EducationSection.module.css';
 import { educationData } from '../data/educationData';
 
 export default function EducationSection() {
   return (
-    <Box id="education" sx={{ mb: 4, py: 2 }}>
+    <section id="education" className={styles.educationSection}>
       <SectionTitle>Education</SectionTitle>
       
       <div className={styles.educationContainer}>
@@ -46,6 +45,6 @@ export default function EducationSection() {
           </div>
         ))}
       </div>
-    </Box>
+    </section>
   );
 }

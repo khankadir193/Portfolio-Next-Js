@@ -1,4 +1,3 @@
-import Box from '@mui/material/Box';
 import { SectionTitle, ExperienceCardComponent } from '../SectionComponents';
 import styles from './ExperienceSection.module.css';
 import { experiencesData } from '../data/experiencesData';
@@ -8,7 +7,7 @@ export default function ExperienceSection() {
   const mainExp = experiencesData.filter(exp => exp.type !== 'skills');
 
   return (
-    <Box id="experience" sx={{ mb: 4, py: 2 }}>
+    <section id="experience" className={styles.experienceSection}>
       <SectionTitle>Experience</SectionTitle>
       
       {/* Main Experiences */}
@@ -23,6 +22,6 @@ export default function ExperienceSection() {
           </div>
         </div>
       )}
-    </Box>
+    </section>
   );
 }

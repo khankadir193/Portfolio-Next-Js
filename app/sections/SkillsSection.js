@@ -1,6 +1,3 @@
-'use client';
-
-import { useEffect, useRef } from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { SectionTitle, TechTag } from '../SectionComponents';
@@ -17,16 +14,8 @@ const SKILL_CATEGORIES = [
 ];
 
 export default function SkillsSection() {
-  const skillsListRefs = useRef([]);
-
-  useEffect(() => {
-    // Add a CSS class if a skills list overflows — checked after mount
-    skillsListRefs.current.forEach((ref) => {
-      if (ref && ref.scrollHeight > ref.clientHeight) {
-        ref.classList.add(styles.scrollable);
-      }
-    });
-  }, []);
+  // No useRef/useEffect needed — the cosmetic scroll-fade indicator (.scrollable)
+  // has been removed. The functional scrollbar is preserved via CSS alone.
 
   return (
     <Box id="skills" sx={{ mb: 4, py: 2 }} component="section" aria-labelledby="skills-heading">
@@ -40,7 +29,6 @@ export default function SkillsSection() {
               <h3 className={styles.skillCardTitle}>{category.title}</h3>
 
               <div
-                ref={(el) => { skillsListRefs.current[index] = el; }}
                 className={styles.skillsList}
                 role="list"
                 aria-label={`${category.title} skills list`}

@@ -21,7 +21,9 @@
   background: radial-gradient(circle, #00d4ff, #0099ff);
   border-radius: 50%;
   border: 2px solid #00d4ff;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.6), inset 0 0 10px rgba(0, 212, 255, 0.3);
+  /* Static glow — animating box-shadow triggers a repaint every frame.
+     The pulse effect is now driven by opacity only (compositor layer, no repaint). */
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.7), inset 0 0 10px rgba(0, 212, 255, 0.3);
   margin-top: 1rem;
   animation: timelinePulse 2s ease-in-out infinite;
 }
@@ -170,13 +172,14 @@
 }
 
 @keyframes timelinePulse {
+  /* Animate opacity only — compositor layer, zero repaint cost.
+     Previously animated box-shadow + transform which triggered repaints
+     every frame of this infinite loop. */
   0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6), inset 0 0 10px rgba(0, 212, 255, 0.3);
-    transform: scale(1);
+    opacity: 0.8;
   }
   50% {
-    box-shadow: 0 0 30px rgba(0, 212, 255, 0.8), inset 0 0 15px rgba(0, 212, 255, 0.5);
-    transform: scale(1.05);
+    opacity: 1;
   }
 }
 
