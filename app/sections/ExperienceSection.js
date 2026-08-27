@@ -14,8 +14,8 @@ export default function ExperienceSection() {
       {mainExp.length > 0 && (
         <div className={styles.experienceGroup}>
           <div className={styles.experienceContainer}>
-            {mainExp.map((exp, index) => (
-              <div key={index} className={styles.experienceItem}>
+            {mainExp.map((exp) => (
+              <div key={`${exp.company}-${exp.period}`} className={styles.experienceItem}>
                 <ExperienceCardComponent {...exp} />
               </div>
             ))}

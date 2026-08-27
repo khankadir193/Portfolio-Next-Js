@@ -8,8 +8,8 @@ export default function EducationSection() {
       <SectionTitle>Education</SectionTitle>
       
       <div className={styles.educationContainer}>
-        {educationData.map((edu, index) => (
-          <div key={index} className={styles.educationItem}>
+        {educationData.map((edu) => (
+          <div key={`${edu.institution}-${edu.period}`} className={styles.educationItem}>
             <div className={styles.timelineDot}></div>
             <div className={styles.educationCard}>
               <div className={styles.educationHeader}>
@@ -36,8 +36,8 @@ export default function EducationSection() {
               
               {edu.skills && edu.skills.length > 0 && (
                 <div className={styles.skillsList}>
-                  {edu.skills.map((skill, idx) => (
-                    <TechTag key={idx} label={skill} variant="outline" />
+                  {edu.skills.map((skill) => (
+                    <TechTag key={skill} label={skill} variant="outline" />
                   ))}
                 </div>
               )}

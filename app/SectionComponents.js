@@ -43,8 +43,8 @@ export const ExperienceCardComponent = ({
     </div>
     <p className={styles.cardDescription}>{description}</p>
     <div className={styles.skillsList}>
-      {skills.map((skill, idx) => (
-        <TechTag key={idx} label={skill} variant="filled" />
+      {skills.map((skill) => (
+        <TechTag key={skill} label={skill} variant="filled" />
       ))}
     </div>
   </NeonCard>
@@ -74,8 +74,8 @@ export const ProjectCardComponent = ({
       Read More →
     </button>
     <div className={styles.skillsList}>
-      {technologies.map((tech, idx) => (
-        <TechTag key={idx} label={tech} variant="outline" />
+      {technologies.map((tech) => (
+        <TechTag key={tech} label={tech} variant="outline" />
       ))}
     </div>
     {link && link !== '#' && (

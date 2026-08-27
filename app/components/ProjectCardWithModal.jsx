@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { ProjectCardComponent } from '../SectionComponents';
-import { TechTag } from '../SectionComponents';
+import { ProjectCardComponent, TechTag } from '../SectionComponents';
 import { lockScroll, unlockScroll } from '../utils/scrollLock';
 import styles from './ProjectCardWithModal.module.css';
 
@@ -135,8 +134,8 @@ function ProjectModal({ project, onClose }) {
           <div className={styles.modalTechSection}>
             <h4 className={styles.modalSectionTitle}>Technologies</h4>
             <div className={styles.modalTechList}>
-              {project.technologies.map((tech, idx) => (
-                <TechTag key={idx} label={tech} variant="filled" />
+              {project.technologies.map((tech) => (
+                <TechTag key={tech} label={tech} variant="filled" />
               ))}
             </div>
           </div>
