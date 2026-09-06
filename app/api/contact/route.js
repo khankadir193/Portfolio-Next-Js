@@ -25,7 +25,41 @@ import { NextResponse } from 'next/server';
  *   - API keys / passwords MUST be in environment variables only.
  */
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+/**
+ * Linear-time email format check — safe on uncontrolled input (no backtracking).
+ *
+ * Replaces the polynomial regex /^[^\s@]+@[^\s@]+\.[^\s@]+$/ which is
+ * vulnerable to catastrophic backtracking (CodeQL: js/polynomial-redos).
+ *
+ * Acceptance criteria (identical to the original regex):
+ *   - Exactly one '@' character present
+ *   - Non-empty local part (before '@'), no whitespace
+ *   - Non-empty domain (after '@'), containing at least one '.'
+ *   - Non-empty TLD (after the last '.'), no whitespace anywhere
+ */
+function isValidEmail(value) {
+  // Quick length guard — real addresses won't exceed 254 chars (RFC 5321).
+  if (value.length === 0 || value.length > 254) return false;
+
+  const atIndex = value.indexOf('@');
+  // Must have exactly one '@'
+  if (atIndex === -1 || atIndex !== value.lastIndexOf('@')) return false;
+
+  const local = value.slice(0, atIndex);
+  const domain = value.slice(atIndex + 1);
+
+  // Local and domain must both be non-empty
+  if (local.length === 0 || domain.length === 0) return false;
+
+  // No whitespace anywhere (mirrors [^\s@]+ semantics)
+  if (/\s/.test(value)) return false;
+
+  // Domain must contain at least one '.' with a non-empty TLD after it
+  const lastDot = domain.lastIndexOf('.');
+  if (lastDot === -1 || lastDot === 0 || lastDot === domain.length - 1) return false;
+
+  return true;
+}
 
 export async function POST(request) {
   let body;
@@ -50,7 +84,7 @@ export async function POST(request) {
   if (!name) errors.name = 'Name is required.';
   if (!email) {
     errors.email = 'Email is required.';
-  } else if (!EMAIL_REGEX.test(email)) {
+  } else if (!isValidEmail(email)) {
     errors.email = 'Email format is invalid.';
   }
   if (!message) errors.message = 'Message is required.';
