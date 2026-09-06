@@ -1,41 +1,53 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { lockScroll, unlockScroll } from './utils/scrollLock';
 
 const NAV_ITEMS = ["about", "skills", "experience", "project", "education", "contact"];
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('about');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const scrollTicking = useRef(false);
   const navRef = useRef(null);
 
   const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
   }, []);
 
+  // Use IntersectionObserver instead of scroll listener + offsetTop reads.
+  // This eliminates per-scroll forced layout and moves section tracking
+  // entirely off the main thread critical path.
   useEffect(() => {
-    const handleScroll = () => {
-      if (scrollTicking.current) return;
-      scrollTicking.current = true;
-
-      requestAnimationFrame(() => {
-        const scrollPosition = window.scrollY + 100;
-        for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
-          const section = document.getElementById(NAV_ITEMS[i]);
-          if (section && section.offsetTop <= scrollPosition) {
-            setActiveSection(NAV_ITEMS[i]);
-            break;
+    // rootMargin: top -80px to account for fixed navbar height,
+    // bottom -50% so section activates when its top 50% enters view.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Find the topmost visible entry (highest up the page)
+        let topmost = null;
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            if (!topmost || entry.boundingClientRect.top < topmost.boundingClientRect.top) {
+              topmost = entry;
+            }
           }
         }
-        scrollTicking.current = false;
-      });
-    };
+        if (topmost) {
+          setActiveSection(topmost.target.id);
+        }
+      },
+      {
+        rootMargin: '-80px 0px -50% 0px',
+        threshold: 0,
+      }
+    );
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const sections = NAV_ITEMS.map((id) => document.getElementById(id)).filter(Boolean);
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
   }, []);
 
+  // Close menu on Escape key
   useEffect(() => {
     if (!isMenuOpen) return;
     const handleKeyDown = (e) => {
@@ -45,15 +57,12 @@ export default function Navbar() {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isMenuOpen, closeMenu]);
 
+  // Scroll lock — ref-counted so it cooperates with modals (Issue 10).
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+      lockScroll();
+      return () => unlockScroll();
     }
-    return () => {
-      document.body.style.overflow = '';
-    };
   }, [isMenuOpen]);
 
   const handleNavClick = useCallback((e, item) => {

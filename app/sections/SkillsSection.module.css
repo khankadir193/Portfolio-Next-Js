@@ -226,3 +226,10 @@
     max-height: none;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .skillCardIcon {
+    animation-play-state: paused;
+  }
+}
+

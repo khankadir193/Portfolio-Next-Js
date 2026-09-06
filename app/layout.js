@@ -21,6 +21,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL('https://abdulkadirkhan.dev'),
   title: "Abdul Kadir Khan - Personal Portfolio",
   description: "Portfolio website of Abdul Kadir Khan - Full Stack Developer | React, Next.js, Modern Web Development",
   icons: {
@@ -51,7 +52,6 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Abdul Kadir Khan - Full Stack Developer',
     description: 'Portfolio website showcasing modern web development skills.',
-    creator: '@abdulkadirkhan',
   },
 };
 

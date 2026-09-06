@@ -1,4 +1,5 @@
-import { Grid, Box } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 import { SectionTitle } from '../SectionComponents';
 import ProjectCardWithModal from '../components/ProjectCardWithModal';
 import styles from './ProjectsSection.module.css';
@@ -10,8 +11,8 @@ export default function ProjectsSection() {
       <SectionTitle>Projects</SectionTitle>
       
       <Grid container spacing={3} sx={{ maxWidth: '1000px', margin: '0 auto' }}>
-        {projectsData.map((proj, index) => (
-          <Grid key={index} size={{ xs: 12, md: 6 }} sx={{ display: 'flex' }}>
+        {projectsData.map((proj) => (
+          <Grid key={proj.title} size={{ xs: 12, md: 6 }} sx={{ display: 'flex' }}>
             <ProjectCardWithModal project={proj} />
           </Grid>
         ))}
