@@ -2,6 +2,10 @@
 const nextConfig = {
   reactCompiler: true,
   
+  // resend and postal-mime must not be bundled by Turbopack — they use
+  // multi-file ESM that Turbopack cannot resolve at build time.
+  serverExternalPackages: ['resend', 'postal-mime', 'standardwebhooks'],
+
   // Performance optimizations
   experimental: {
     optimizeCss: true,

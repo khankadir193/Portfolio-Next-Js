@@ -34,10 +34,22 @@ export default function ContactSection() {
   const validateForm = () => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) {
+    const emailTrimmed = formData.email.trim();
+    if (!emailTrimmed) {
       newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
+    } else {
+      // Linear-time check — mirrors server-side isValidEmail (no backtracking regex)
+      const at = emailTrimmed.indexOf('@');
+      const validEmail =
+        at > 0 &&
+        at === emailTrimmed.lastIndexOf('@') &&
+        !/\s/.test(emailTrimmed) &&
+        (() => {
+          const domain = emailTrimmed.slice(at + 1);
+          const dot = domain.lastIndexOf('.');
+          return dot > 0 && dot < domain.length - 1;
+        })();
+      if (!validEmail) newErrors.email = 'Email is invalid';
     }
     if (!formData.message.trim()) newErrors.message = 'Message is required';
     return newErrors;
