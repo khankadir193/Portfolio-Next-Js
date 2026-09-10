@@ -281,7 +281,7 @@
 @media (max-width: 480px) {
   .contactCard,
   .contactForm {
-    padding: var(--space-4);
+    padding: var(--space-3);
   }
 
   .infoText {

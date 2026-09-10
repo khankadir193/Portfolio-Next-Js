@@ -7,7 +7,6 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  min-height: clamp(280px, 50vw, 400px);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -65,12 +64,7 @@
   justify-content: center;
   flex-grow: 1;
   align-items: flex-start;
-  overflow-y: auto;
-  overflow-x: hidden;
-  max-height: 280px;
   padding-right: 0.5rem;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 212, 255, 0.3) transparent;
 }
 
 .skillsList::-webkit-scrollbar {
@@ -126,22 +120,16 @@
 
 @media (max-width: 1024px) {
   .skillCardContainer {
-    min-height: 380px;
     padding: var(--space-3);
   }
 
   .skillCardTitle {
     font-size: 1.2rem;
   }
-
-  .skillsList {
-    max-height: 240px;
-  }
 }
 
 @media (max-width: 768px) {
   .skillCardContainer {
-    min-height: 360px;
     padding: var(--space-3);
   }
 
@@ -155,14 +143,11 @@
 
   .skillsList {
     gap: 0.6rem;
-    max-height: none;
-    overflow-y: visible;
   }
 }
 
 @media (max-width: 600px) {
   .skillCardContainer {
-    min-height: auto;
     padding: var(--space-3);
   }
 
@@ -178,8 +163,6 @@
 
   .skillsList {
     gap: 0.5rem;
-    max-height: none;
-    overflow-y: visible;
   }
 }
 
