@@ -88,6 +88,8 @@ body::before {
   pointer-events: none;
   z-index: -2;
   animation: starfieldAnimation 30s linear infinite;
+  transform: translateZ(0);
+  will-change: transform, background-position;
 }
 
 body::after {
@@ -227,11 +229,12 @@ section[id] {
     rgba(15, 15, 26, 0.96) 50%, 
     rgba(10, 10, 15, 0.98) 100%);
   backdrop-filter: blur(20px);
+  will-change: backdrop-filter;
   box-shadow: 
     0 8px 25px rgba(0, 0, 0, 0.6),
     0 0 40px rgba(0, 212, 255, 0.3),
     inset 0 0 15px rgba(0, 212, 255, 0.06);
-  animation: fadeInUp 1.5s cubic-bezier(0.4, 0, 0.2, 1), navbarPulse 6s ease-in-out infinite;
+  animation: navbarPulse 6s ease-in-out infinite;
   width: 100%;
   transition: border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -323,7 +326,6 @@ section[id] {
   display: flex;
   flex-wrap: nowrap;
   gap: 0.4rem;
-  animation: fadeInUp 1.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-links li {
