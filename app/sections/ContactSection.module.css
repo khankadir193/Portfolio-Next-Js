@@ -1,3 +1,32 @@
+.contactSection {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media (min-width: 1200px) {
+  .contactGrid {
+    grid-template-columns: 5fr 7fr;
+  }
+}
+
+.contactGridLeft,
+.contactGridRight {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Contact Card - Left Side */
 .contactCard {
   border: var(--border-card);

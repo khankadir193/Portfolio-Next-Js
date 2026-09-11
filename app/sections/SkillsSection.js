@@ -1,5 +1,4 @@
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+
 import { SectionTitle, TechTag } from '../SectionComponents';
 import styles from './SkillsSection.module.css';
 import { skillsData } from '../data/skillsData';
@@ -18,12 +17,12 @@ export default function SkillsSection() {
   // has been removed. The functional scrollbar is preserved via CSS alone.
 
   return (
-    <Box id="skills" sx={{ mb: 4, py: 2 }} component="section" aria-labelledby="skills-heading">
+    <section id="skills" className={styles.skillsSection} aria-labelledby="skills-heading">
       <SectionTitle id="skills-heading">Skills</SectionTitle>
 
-      <Grid container spacing={3} sx={{ maxWidth: '1000px', margin: '0 auto' }}>
+      <div className={styles.skillsGrid}>
         {SKILL_CATEGORIES.map((category, index) => (
-          <Grid key={category.title} size={{ xs: 12, sm: 6, md: 4 }} sx={{ display: 'flex' }}>
+          <div key={category.title} className={styles.skillsGridItem}>
             <article className={styles.skillCardContainer}>
               <div className={styles.skillCardIcon} aria-hidden="true">{category.icon}</div>
               <h3 className={styles.skillCardTitle}>{category.title}</h3>
@@ -38,9 +37,9 @@ export default function SkillsSection() {
                 ))}
               </div>
             </article>
-          </Grid>
+          </div>
         ))}
-      </Grid>
-    </Box>
+      </div>
+    </section>
   );
 }
