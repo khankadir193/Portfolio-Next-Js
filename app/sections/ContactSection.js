@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 import Phone from '@mui/icons-material/Phone';
 import LocationOn from '@mui/icons-material/LocationOn';
 import LinkedIn from '@mui/icons-material/LinkedIn';
@@ -107,12 +105,12 @@ export default function ContactSection() {
   };
 
   return (
-    <Box id="contact" sx={{ py: 4, position: 'relative', overflow: 'hidden' }}>
+    <section id="contact" className={styles.contactSection}>
       <SectionTitle>Get In Touch</SectionTitle>
 
-      <Grid container spacing={4} sx={{ maxWidth: '1200px', margin: '0 auto', px: 2 }}>
+      <div className={styles.contactGrid}>
         {/* Left — Contact Info */}
-        <Grid size={{ xs: 12, lg: 5 }}>
+        <div className={styles.contactGridLeft}>
           <div className={styles.contactCard}>
             <div className={styles.contactInfo}>
               <div className={styles.infoItem}>
@@ -169,10 +167,10 @@ export default function ContactSection() {
               </a>
             </div>
           </div>
-        </Grid>
+        </div>
 
         {/* Right — Contact Form */}
-        <Grid size={{ xs: 12, lg: 7 }}>
+        <div className={styles.contactGridRight}>
           <form onSubmit={handleSubmit} className={styles.contactForm} noValidate>
             <div className={styles.formGroup}>
               <label className={styles.formLabel} htmlFor="contact-name">
@@ -256,8 +254,8 @@ export default function ContactSection() {
               </div>
             )}
           </form>
-        </Grid>
-      </Grid>
-    </Box>
+        </div>
+      </div>
+    </section>
   );
 }

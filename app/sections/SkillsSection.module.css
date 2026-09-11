@@ -1,3 +1,33 @@
+.skillsSection {
+  margin-bottom: 32px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .skillsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .skillsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.skillsGridItem {
+  display: flex;
+}
+
 .skillCardContainer {
   border: var(--border-card);
   border-radius: var(--radius-lg);
