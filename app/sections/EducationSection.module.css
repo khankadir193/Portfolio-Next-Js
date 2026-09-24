@@ -125,6 +125,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+  word-break: break-word;
 }
 
 .institution {

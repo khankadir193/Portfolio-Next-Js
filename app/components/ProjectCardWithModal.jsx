@@ -60,27 +60,31 @@ function ProjectModal({ project, onClose }) {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
+        e.stopPropagation();
         onClose();
         return;
       }
 
       // Focus trap: keep Tab/Shift+Tab cycling inside the modal
       if (e.key === 'Tab') {
-        const focusable = overlayRef.current?.querySelectorAll(FOCUSABLE);
-        if (!focusable || focusable.length === 0) return;
+        const focusable = Array.from(overlayRef.current?.querySelectorAll(FOCUSABLE) || []);
+        if (focusable.length === 0) return;
 
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
+        
+        // If focus is lost or on the body, indexOf returns -1
+        const currentIndex = focusable.indexOf(document.activeElement);
 
         if (e.shiftKey) {
-          // Shift+Tab: if focus is on first element, wrap to last
-          if (document.activeElement === first) {
+          // Shift+Tab: if focus is on first element or lost, wrap to last
+          if (currentIndex <= 0) {
             e.preventDefault();
             last.focus();
           }
         } else {
-          // Tab: if focus is on last element, wrap to first
-          if (document.activeElement === last) {
+          // Tab: if focus is on last element or lost, wrap to first
+          if (currentIndex === -1 || currentIndex === focusable.length - 1) {
             e.preventDefault();
             first.focus();
           }

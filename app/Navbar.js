@@ -14,25 +14,37 @@ export default function Navbar() {
     setIsMenuOpen(false);
   }, []);
 
+  // Use a ref to track all currently intersecting sections
+  const intersectingSections = useRef(new Map());
+
   // Use IntersectionObserver instead of scroll listener + offsetTop reads.
-  // This eliminates per-scroll forced layout and moves section tracking
-  // entirely off the main thread critical path.
   useEffect(() => {
-    // rootMargin: top -80px to account for fixed navbar height,
-    // bottom -50% so section activates when its top 50% enters view.
     const observer = new IntersectionObserver(
       (entries) => {
-        // Find the topmost visible entry (highest up the page)
-        let topmost = null;
-        for (const entry of entries) {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (!topmost || entry.boundingClientRect.top < topmost.boundingClientRect.top) {
-              topmost = entry;
-            }
+            intersectingSections.current.set(entry.target.id, entry);
+          } else {
+            intersectingSections.current.delete(entry.target.id);
           }
-        }
-        if (topmost) {
-          setActiveSection(topmost.target.id);
+        });
+
+        // Find the section closest to the top of the viewport (top >= 0 or largest negative)
+        let closest = null;
+        let minDistance = Infinity;
+
+        intersectingSections.current.forEach((entry, id) => {
+          // We want the section that is most prominently occupying the viewport.
+          // A good heuristic is the one whose top is closest to 0.
+          const distance = Math.abs(entry.boundingClientRect.top);
+          if (distance < minDistance) {
+            minDistance = distance;
+            closest = id;
+          }
+        });
+
+        if (closest) {
+          setActiveSection(closest);
         }
       },
       {
@@ -51,7 +63,10 @@ export default function Navbar() {
   useEffect(() => {
     if (!isMenuOpen) return;
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') closeMenu();
+      if (e.key === 'Escape') {
+        e.stopPropagation();
+        closeMenu();
+      }
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
