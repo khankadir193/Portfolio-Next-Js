@@ -105,8 +105,8 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className={styles.contactSection}>
-      <SectionTitle>Get In Touch</SectionTitle>
+    <section id="contact" className={styles.contactSection} aria-labelledby="contact-heading">
+      <SectionTitle id="contact-heading">Get In Touch</SectionTitle>
 
       <div className={styles.contactGrid}>
         {/* Left — Contact Info */}

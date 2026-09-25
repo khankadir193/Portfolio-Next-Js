@@ -7,8 +7,8 @@ export default function ExperienceSection() {
   const mainExp = experiencesData.filter(exp => exp.type !== 'skills');
 
   return (
-    <section id="experience" className={styles.experienceSection}>
-      <SectionTitle>Experience</SectionTitle>
+    <section id="experience" className={styles.experienceSection} aria-labelledby="experience-heading">
+      <SectionTitle id="experience-heading">Experience</SectionTitle>
       
       {/* Main Experiences */}
       {mainExp.length > 0 && (

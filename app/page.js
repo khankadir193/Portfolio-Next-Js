@@ -25,25 +25,11 @@ export default function Home() {
           into this Server Component. The max-width and padding match Container maxWidth="lg".
         */}
         <div className="page-container">
-          <section aria-labelledby="skills-heading">
-            <SkillsSection />
-          </section>
-
-          <section aria-labelledby="experience-heading">
-            <ExperienceSection />
-          </section>
-
-          <section aria-labelledby="projects-heading">
-            <ProjectsSection />
-          </section>
-
-          <section aria-labelledby="education-heading">
-            <EducationSection />
-          </section>
-
-          <section aria-labelledby="contact-heading">
-            <ContactSection />
-          </section>
+          <SkillsSection />
+          <ExperienceSection />
+          <ProjectsSection />
+          <EducationSection />
+          <ContactSection />
         </div>
       </div>
 

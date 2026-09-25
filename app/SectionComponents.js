@@ -1,8 +1,8 @@
 import styles from './SectionComponents.module.css';
 
 // Section Title with Neon styling
-export const SectionTitle = ({ children }) => (
-  <h2 className={styles.sectionTitle}>
+export const SectionTitle = ({ children, ...props }) => (
+  <h2 className={styles.sectionTitle} {...props}>
     {children}
   </h2>
 );
@@ -88,10 +88,12 @@ export const ProjectCardComponent = ({
   </NeonCard>
 );
 
-export default {
+const SectionComponents = {
   SectionTitle,
   TechTag,
   NeonCard,
   ExperienceCardComponent,
   ProjectCardComponent
 };
+
+export default SectionComponents;
