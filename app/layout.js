@@ -1,9 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientProviders from "./ClientProviders";
-import EmotionRegistry from "./EmotionRegistry";
-
-
 
 
 const geistSans = Geist({
@@ -25,9 +22,8 @@ export const metadata = {
   title: "Abdul Kadir Khan - Personal Portfolio",
   description: "Portfolio website of Abdul Kadir Khan - Full Stack Developer | React, Next.js, Modern Web Development",
   icons: {
-    icon: '/globe.svg',
+    icon: '/favicon.ico',
     shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
   },
   robots: {
     index: true,
@@ -69,11 +65,9 @@ export default function RootLayout({ children }) {
         <meta name="msapplication-TileColor" content="#0a0a0f" />
       </head>
       <body>
-        <EmotionRegistry>
-          <ClientProviders>
-            <main>{children}</main>
-          </ClientProviders>
-        </EmotionRegistry>
+        <ClientProviders>
+          <main>{children}</main>
+        </ClientProviders>
       </body>
     </html>
   );

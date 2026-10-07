@@ -1,11 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Phone from '@mui/icons-material/Phone';
-import LocationOn from '@mui/icons-material/LocationOn';
-import LinkedIn from '@mui/icons-material/LinkedIn';
-import GitHub from '@mui/icons-material/GitHub';
-import Mail from '@mui/icons-material/Mail';
+import { PhoneIcon as Phone, LocationIcon as LocationOn, LinkedInIcon as LinkedIn, GitHubIcon as GitHub, MailIcon as Mail } from '../components/Icons';
 import { SectionTitle } from '../SectionComponents';
 import styles from './ContactSection.module.css';
 
@@ -105,8 +101,8 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className={styles.contactSection}>
-      <SectionTitle>Get In Touch</SectionTitle>
+    <section id="contact" className={styles.contactSection} aria-labelledby="contact-heading">
+      <SectionTitle id="contact-heading">Get In Touch</SectionTitle>
 
       <div className={styles.contactGrid}>
         {/* Left — Contact Info */}

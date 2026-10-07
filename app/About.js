@@ -4,11 +4,11 @@ import styles from './About.module.css';
 
 export default function About() {
   return (
-    <section id="about" className={styles.about}>
+    <section id="about" className={styles.about} aria-labelledby="about-heading">
       <div className={styles.container}>
         {/* Left Section */}
         <div className={styles.left}>
-          <h2 className={styles.sectionTitle}>About Me</h2>
+          <h2 id="about-heading" className={styles.sectionTitle}>About Me</h2>
           
           <p className={styles.bio}>
             Frontend Developer with 4+ years of experience building scalable and user-friendly web applications using React.js, JavaScript, and Redux Toolkit. Experienced in developing responsive interfaces, integrating REST APIs, and optimizing application performance.

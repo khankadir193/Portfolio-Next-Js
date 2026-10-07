@@ -4,8 +4,8 @@ import { educationData } from '../data/educationData';
 
 export default function EducationSection() {
   return (
-    <section id="education" className={styles.educationSection}>
-      <SectionTitle>Education</SectionTitle>
+    <section id="education" className={styles.educationSection} aria-labelledby="education-heading">
+      <SectionTitle id="education-heading">Education</SectionTitle>
       
       <div className={styles.educationContainer}>
         {educationData.map((edu) => (

@@ -1,7 +1,4 @@
-import GitHub from '@mui/icons-material/GitHub';
-import LinkedIn from '@mui/icons-material/LinkedIn';
-import Email from '@mui/icons-material/Email';
-import Phone from '@mui/icons-material/Phone';
+import { GitHubIcon as GitHub, LinkedInIcon as LinkedIn, MailIcon as Email, PhoneIcon as Phone } from './components/Icons';
 import styles from './Footer.module.css';
 
 export default function Footer() {

@@ -6,8 +6,8 @@ import { projectsData } from '../data/projectsData';
 
 export default function ProjectsSection() {
   return (
-    <section id="project" className={styles.projectsSection}>
-      <SectionTitle>Projects</SectionTitle>
+    <section id="project" className={styles.projectsSection} aria-labelledby="projects-heading">
+      <SectionTitle id="projects-heading">Projects</SectionTitle>
       
       <div className={styles.projectsGrid}>
         {projectsData.map((proj) => (
