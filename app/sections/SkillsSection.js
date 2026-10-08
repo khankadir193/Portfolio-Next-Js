@@ -9,7 +9,7 @@ import { skillsData } from '../data/skillsData';
 const SKILL_CATEGORIES = [
   { title: 'Frontend', skills: skillsData.frontend, icon: '🎨' },
   { title: 'Backend', skills: skillsData.backend, icon: '⚙️' },
-  { title: 'Software', skills: skillsData.software, icon: '🛠️' },
+  { title: 'Software / Tools', skills: skillsData.software, icon: '🛠️' },
 ];
 
 export default function SkillsSection() {
