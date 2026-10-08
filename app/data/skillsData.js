@@ -1,32 +1,39 @@
 // Skills data
 export const skillsData = {
   frontend: [
-    'React.js',
-    'Next.js', 
+    'React js',
+    'JavaScript (ES6+)', 
     'TypeScript',
-    'JavaScript (ES6+)',
+    'Next js',
+    'React Hooks',
+    'React Router',
     'Redux Toolkit',
+    'Redux',
     'React Query',
     'Context API',
     'HTML5',
-    'CSS3',
-    'Tailwind CSS',
-    'Material UI',
-    'Styled-Components'
+    'CSS3'
   ],
   backend: [
-    'Node.js',
-    'Hapi.js',
-    'REST APIs'
+    'Node js',
+    'Express js',
+    'REST APIs',
+    'Supabase',
+    'PostgreSQL'
   ],
   software: [
     'Git',
     'GitHub',
     'Vite',
     'npm',
+    'ESLint',
+    'Prettier',
     'Chrome DevTools',
     'Jest',
     'Unit Testing',
-    'VS Code'
+    'VS Code',
+    'Tailwind CSS',
+    'Material UI',
+    'Styled-Components'
   ]
 };
