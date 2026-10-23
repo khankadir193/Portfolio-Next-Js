@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import Groq from 'groq-sdk';
 
 // ─── Portfolio knowledge base ────────────────────────────────────────────────
 // Assembled once at module load time (server-side only, never sent to client).
@@ -160,88 +161,71 @@ export async function POST(request) {
     );
   }
 
-  // 4. API key guard — GEMINI_API_KEY must be set in .env.local
-  const apiKey = process.env.GEMINI_API_KEY;
+  // 4. API key guard — GROQ_API_KEY must be set in .env.local
+  const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
     return NextResponse.json(
       {
         success: false,
-        message: 'AI Assistant is not configured. Please set GEMINI_API_KEY in .env.local.',
+        message: 'AI Assistant is not configured. Please set GROQ_API_KEY in .env.local.',
       },
       { status: 503 }
     );
   }
 
-  // 5. Call Gemini 3.8 Flash (2.0 Flash was deprecated — see Google AI changelog)
-  const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${apiKey}`;
-  const payload = {
-    contents: [
-      {
-        parts: [{ text: `${PORTFOLIO_CONTEXT}\n\nRecruiter question: ${question}` }],
-      },
-    ],
-    generationConfig: {
-      temperature: 0.3,     // Low = factual, grounded responses
-      maxOutputTokens: 512, // Cost control
-      topP: 0.8,
-      topK: 20,
-    },
-    safetySettings: [
-      { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-      { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-      { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-      { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-    ],
-  };
+  // 5. Call Groq via the official groq-sdk
+  const groq = new Groq({ apiKey });
 
-  let geminiRes;
+  let completion;
   try {
-    geminiRes = await fetch(GEMINI_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(15_000), // 15-second timeout
+    completion = await groq.chat.completions.create({
+      model: 'openai/gpt-oss-120b',
+      messages: [
+        {
+          role: 'system',
+          content: PORTFOLIO_CONTEXT,
+        },
+        {
+          role: 'user',
+          content: question,
+        },
+      ],
+      temperature: 0.3,      // Low = factual, grounded responses
+      max_tokens: 512,       // Cost control
+      top_p: 0.8,
     });
   } catch (err) {
-    console.error('[assistant] fetch error:', err?.message ?? err);
+    console.error('[assistant] Groq SDK error:', err?.message ?? err);
+
+    // Handle Groq-specific error types
+    const status = err?.status ?? err?.statusCode;
+    if (status === 429) {
+      return NextResponse.json(
+        { success: false, message: 'AI service is rate-limited. Please try again in a moment.' },
+        { status: 429 }
+      );
+    }
+    if (status === 401) {
+      return NextResponse.json(
+        { success: false, message: 'AI Assistant is misconfigured. Please contact the site owner.' },
+        { status: 503 }
+      );
+    }
+
     return NextResponse.json(
       { success: false, message: 'AI service is temporarily unavailable. Please try again.' },
       { status: 502 }
     );
   }
 
-  if (!geminiRes.ok) {
-    // Log the full provider error body server-side (never forwarded to client)
-    let providerErrorBody = '';
-    try { providerErrorBody = await geminiRes.text(); } catch { /* ignore */ }
-    console.error('[assistant] Gemini HTTP error:', geminiRes.status, providerErrorBody);
-    return NextResponse.json(
-      { success: false, message: 'AI service returned an error. Please try again later.' },
-      { status: 502 }
-    );
-  }
-
-  let data;
-  try {
-    data = await geminiRes.json();
-  } catch {
-    return NextResponse.json(
-      { success: false, message: 'Unexpected response from AI service.' },
-      { status: 502 }
-    );
-  }
-
-  const answer = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  const answer = completion?.choices?.[0]?.message?.content?.trim();
   if (!answer) {
-    const reason = data?.candidates?.[0]?.finishReason;
-    console.error('[assistant] empty answer. finishReason:', reason);
+    const finishReason = completion?.choices?.[0]?.finish_reason;
+    console.error('[assistant] empty answer. finish_reason:', finishReason);
     return NextResponse.json(
       {
         success: false,
-        message:
-          reason === 'SAFETY'
-            ? "I can't answer that. Please ask something about Abdul Kadir's portfolio."
-            : 'AI returned an empty response. Please rephrase your question.',
+        message: 'AI returned an empty response. Please rephrase your question.',
       },
       { status: 200 }
     );

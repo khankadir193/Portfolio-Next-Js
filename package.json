@@ -15,6 +15,7 @@
     "@mui/material": "^7.3.9",
     "baseline-browser-mapping": "^2.11.21",
     "critters": "^0.0.23",
+    "groq-sdk": "^1.6.0",
     "next": "16.2.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
